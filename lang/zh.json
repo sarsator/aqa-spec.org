@@ -92,7 +92,7 @@
     {"url": "https://aqa-spec.org/schemas/aqa-schema.json", "label": "JSON Schema", "desc": "机器可读的验证模式"}
   ],
   "faq_title": "常见问题",
-  "faq_intro": "本 FAQ 实现了 AQA Full + Shield。<a href=\"view-source:https://aqa-spec.org/\">查看页面源代码</a>以查看 JSON-LD 块。",
+  "faq_intro": "本 FAQ 实现了 AQA Full + Shield。查看页面源代码 (Ctrl+U) 以查看 JSON-LD 块。",
   "faq": [
     {
       "q": "什么是 AQA？",

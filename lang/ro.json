@@ -92,7 +92,7 @@
     {"url": "https://aqa-spec.org/schemas/aqa-schema.json", "label": "JSON Schema", "desc": "schemă de validare lizibilă de mașini"}
   ],
   "faq_title": "Întrebări Frecvente",
-  "faq_intro": "Acest FAQ implementează AQA Full + Shield. <a href=\"view-source:https://aqa-spec.org/\">Vizualizați sursa paginii</a> pentru a vedea blocul JSON-LD.",
+  "faq_intro": "Acest FAQ implementează AQA Full + Shield. Vizualizați sursa paginii (Ctrl+U) pentru a vedea blocul JSON-LD.",
   "faq": [
     {
       "q": "Ce este AQA?",

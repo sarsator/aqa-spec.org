@@ -92,7 +92,7 @@
     {"url": "https://aqa-spec.org/schemas/aqa-schema.json", "label": "JSON Schema", "desc": "strojově čitelné validační schéma"}
   ],
   "faq_title": "Často Kladené Dotazy",
-  "faq_intro": "Toto FAQ implementuje AQA Full + Shield. <a href=\"view-source:https://aqa-spec.org/\">Zobrazit zdrojový kód stránky</a> a prohlédnout si blok JSON-LD.",
+  "faq_intro": "Toto FAQ implementuje AQA Full + Shield. Zobrazit zdrojový kód stránky (Ctrl+U) a prohlédnout si blok JSON-LD.",
   "faq": [
     {
       "q": "Co je AQA?",

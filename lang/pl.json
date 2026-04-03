@@ -92,7 +92,7 @@
     {"url": "https://aqa-spec.org/schemas/aqa-schema.json", "label": "JSON Schema", "desc": "maszynowo czytelny schemat walidacji"}
   ],
   "faq_title": "Często Zadawane Pytania",
-  "faq_intro": "To FAQ implementuje AQA Full + Shield. <a href=\"view-source:https://aqa-spec.org/\">Zobacz źródło strony</a>, aby zobaczyć blok JSON-LD.",
+  "faq_intro": "To FAQ implementuje AQA Full + Shield. Zobacz źródło strony (Ctrl+U), aby zobaczyć blok JSON-LD.",
   "faq": [
     {
       "q": "Czym jest AQA?",

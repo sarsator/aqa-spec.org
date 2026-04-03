@@ -92,7 +92,7 @@
     {"url": "https://aqa-spec.org/schemas/aqa-schema.json", "label": "JSONスキーマ", "desc": "機械可読の検証スキーマ"}
   ],
   "faq_title": "よくある質問",
-  "faq_intro": "このFAQはAQA Full + Shieldを実装しています。<a href=\"view-source:https://aqa-spec.org/\">ページのソースコードを表示</a>してJSON-LDブロックをご確認ください。",
+  "faq_intro": "このFAQはAQA Full + Shieldを実装しています。ページのソースコードを表示 (Ctrl+U) してJSON-LDブロックをご確認ください。",
   "faq": [
     {
       "q": "AQAとは何ですか？",

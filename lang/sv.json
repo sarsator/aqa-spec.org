@@ -92,7 +92,7 @@
     {"url": "https://aqa-spec.org/schemas/aqa-schema.json", "label": "JSON Schema", "desc": "maskinläsbart valideringsschema"}
   ],
   "faq_title": "Vanliga frågor",
-  "faq_intro": "Denna FAQ implementerar AQA Full + Shield. <a href=\"view-source:https://aqa-spec.org/\">Visa sidans källkod</a> för att se JSON-LD-blocket.",
+  "faq_intro": "Denna FAQ implementerar AQA Full + Shield. Visa sidans källkod (Ctrl+U) för att se JSON-LD-blocket.",
   "faq": [
     {
       "q": "Vad är AQA?",
