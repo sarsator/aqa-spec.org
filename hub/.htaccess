@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /hub/
+
+# API routes
+RewriteRule ^api/v1/ping$ api/v1/ping.php [L,QSA]
+RewriteRule ^api/v1/updates$ api/v1/updates.php [L,QSA]
+RewriteRule ^api/v1/stats$ api/v1/stats.php [L,QSA]
