@@ -1,0 +1,277 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #1a1a2e;
+  background: #fff;
+  line-height: 1.6;
+}
+
+a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Header */
+.site-header {
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 3rem 0 2.5rem;
+}
+
+.site-header h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.site-header .subtitle {
+  font-size: 1.125rem;
+  color: #4b5563;
+  max-width: 600px;
+  margin-bottom: 1.25rem;
+}
+
+.header-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.header-meta .badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  background: #e5e7eb;
+  color: #1a1a2e;
+}
+
+.header-meta a {
+  font-weight: 500;
+}
+
+/* Sections */
+section {
+  padding: 2.5rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+section h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+section h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+section p {
+  margin-bottom: 1rem;
+}
+
+section p:last-child {
+  margin-bottom: 0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #e5e7eb;
+}
+
+th {
+  font-weight: 600;
+  background: #f9fafb;
+}
+
+/* Code blocks */
+pre {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 1rem 0;
+}
+
+code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+p code,
+li code,
+td code {
+  background: #f3f4f6;
+  padding: 0.15rem 0.35rem;
+  border-radius: 3px;
+  font-size: 0.85em;
+}
+
+/* Code block with copy button */
+.code-block {
+  position: relative;
+}
+
+.code-block .copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: #e5e7eb;
+  border: none;
+  border-radius: 3px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.75rem;
+  font-family: inherit;
+  cursor: pointer;
+  color: #1a1a2e;
+}
+
+.code-block .copy-btn:hover {
+  background: #d1d5db;
+}
+
+/* Conformance levels */
+.levels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.level-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 1.25rem;
+}
+
+.level-card h3 {
+  margin-bottom: 0.75rem;
+}
+
+.level-card .effort {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+/* Feature groups */
+.feature-groups {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.feature-group {
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+.feature-group h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.feature-group ul {
+  list-style: none;
+  padding: 0;
+}
+
+.feature-group li {
+  font-size: 0.9rem;
+  padding: 0.2rem 0;
+}
+
+/* Resources list */
+.resources-list {
+  list-style: none;
+  padding: 0;
+}
+
+.resources-list li {
+  padding: 0.4rem 0;
+  font-size: 0.95rem;
+}
+
+/* Footer */
+.site-footer {
+  padding: 2rem 0;
+  border-top: 1px solid #e5e7eb;
+  font-size: 0.85rem;
+  color: #6b7280;
+  text-align: center;
+}
+
+.site-footer p {
+  margin-bottom: 0.3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .site-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .levels {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-groups {
+    grid-template-columns: 1fr;
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
+
+  th,
+  td {
+    padding: 0.4rem 0.5rem;
+  }
+}

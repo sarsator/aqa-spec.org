@@ -1,0 +1,174 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "aqa": "https://aqa-spec.org/ns/",
+
+    "updateFrequency": {
+      "@id": "aqa:updateFrequency",
+      "@type": "schema:Text"
+    },
+    "conformanceLevel": {
+      "@id": "aqa:conformanceLevel",
+      "@type": "schema:Text"
+    },
+    "questionVersion": {
+      "@id": "aqa:questionVersion",
+      "@type": "schema:Text"
+    },
+    "changelog": {
+      "@id": "aqa:changelog",
+      "@container": "@list"
+    },
+    "changeDate": {
+      "@id": "aqa:changeDate",
+      "@type": "schema:Date"
+    },
+    "changeDescription": {
+      "@id": "aqa:changeDescription",
+      "@type": "schema:Text"
+    },
+    "changeSourceUrl": {
+      "@id": "aqa:changeSourceUrl",
+      "@type": "schema:URL"
+    },
+    "changeVersionNote": {
+      "@id": "aqa:changeVersionNote",
+      "@type": "schema:Text"
+    },
+    "monitoringSources": {
+      "@id": "aqa:monitoringSources",
+      "@container": "@list"
+    },
+    "sourceType": {
+      "@id": "aqa:sourceType",
+      "@type": "schema:Text"
+    },
+    "aiUsagePolicy": {
+      "@id": "aqa:aiUsagePolicy"
+    },
+    "ragCitation": {
+      "@id": "aqa:ragCitation",
+      "@type": "schema:Text"
+    },
+    "modelTraining": {
+      "@id": "aqa:modelTraining",
+      "@type": "schema:Text"
+    },
+    "summarization": {
+      "@id": "aqa:summarization",
+      "@type": "schema:Text"
+    },
+    "directQuote": {
+      "@id": "aqa:directQuote",
+      "@type": "schema:Text"
+    },
+    "commercialUse": {
+      "@id": "aqa:commercialUse",
+      "@type": "schema:Text"
+    },
+    "contentExpiry": {
+      "@id": "aqa:contentExpiry",
+      "@type": "schema:Date"
+    },
+
+    "contentSignature": {
+      "@id": "aqa:contentSignature"
+    },
+    "hashAlgorithm": {
+      "@id": "aqa:hashAlgorithm",
+      "@type": "schema:Text"
+    },
+    "hashValue": {
+      "@id": "aqa:hashValue",
+      "@type": "schema:Text"
+    },
+    "signedFields": {
+      "@id": "aqa:signedFields",
+      "@container": "@list"
+    },
+    "signedAt": {
+      "@id": "aqa:signedAt",
+      "@type": "schema:DateTime"
+    },
+
+    "ragSummary": {
+      "@id": "aqa:ragSummary",
+      "@type": "schema:Text"
+    },
+
+    "audienceAnswers": {
+      "@id": "aqa:audienceAnswers",
+      "@container": "@list"
+    },
+    "audience": {
+      "@id": "aqa:audience",
+      "@type": "schema:Text"
+    },
+
+    "dynamicEndpoint": {
+      "@id": "aqa:dynamicEndpoint"
+    },
+    "responseFormat": {
+      "@id": "aqa:responseFormat",
+      "@type": "schema:Text"
+    },
+    "cacheTTL": {
+      "@id": "aqa:cacheTTL",
+      "@type": "schema:Integer"
+    },
+    "fallbackText": {
+      "@id": "aqa:fallbackText",
+      "@type": "schema:Text"
+    },
+
+    "unansweredQueryEndpoint": {
+      "@id": "aqa:unansweredQueryEndpoint",
+      "@type": "schema:URL"
+    },
+    "specVersion": {
+      "@id": "aqa:specVersion",
+      "@type": "schema:Text"
+    },
+    "updateFeedUrl": {
+      "@id": "aqa:updateFeedUrl",
+      "@type": "schema:URL"
+    },
+    "pingbackEndpoints": {
+      "@id": "aqa:pingbackEndpoints",
+      "@container": "@list"
+    },
+
+    "validThrough": {
+      "@id": "schema:validThrough",
+      "@type": "schema:Date"
+    },
+
+    "verificationStatus": {
+      "@id": "aqa:verificationStatus",
+      "@type": "schema:Text"
+    },
+
+    "ChangelogEntry": {
+      "@id": "aqa:ChangelogEntry"
+    },
+    "MonitoringSource": {
+      "@id": "aqa:MonitoringSource"
+    },
+    "SectorClassification": {
+      "@id": "aqa:SectorClassification"
+    },
+    "AIUsagePolicy": {
+      "@id": "aqa:AIUsagePolicy"
+    },
+    "ContentSignature": {
+      "@id": "aqa:ContentSignature"
+    },
+    "AudienceAnswer": {
+      "@id": "aqa:AudienceAnswer"
+    },
+    "DynamicEndpoint": {
+      "@id": "aqa:DynamicEndpoint"
+    }
+  }
+}
