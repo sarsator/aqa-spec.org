@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AQA — AI Question Answer | Öppen specifikation för AI-optimerad Q&amp;A</title>
+  <meta name="description" content="AQA är en öppen specifikation för att berika FAQ-strukturerad data med metadata som AI-system behöver. Schema.org-kompatibel, MIT-licensierad, fri för alltid.">
+  <meta property="og:title" content="AQA — AI Question Answer">
+  <meta property="og:description" content="Öppen specifikation för strukturerat Q&A-innehåll optimerat för AI-förståelse och källhänvisning.">
+  <meta property="og:url" content="https://aqa-spec.org/sv/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://aqa-spec.org/sv/">
+  <link rel="alternate" hreflang="en" href="https://aqa-spec.org/">
+  <link rel="alternate" hreflang="fr" href="https://aqa-spec.org/fr/">
+  <link rel="alternate" hreflang="de" href="https://aqa-spec.org/de/">
+  <link rel="alternate" hreflang="es" href="https://aqa-spec.org/es/">
+  <link rel="alternate" hreflang="it" href="https://aqa-spec.org/it/">
+  <link rel="alternate" hreflang="pt" href="https://aqa-spec.org/pt/">
+  <link rel="alternate" hreflang="nl" href="https://aqa-spec.org/nl/">
+  <link rel="alternate" hreflang="pl" href="https://aqa-spec.org/pl/">
+  <link rel="alternate" hreflang="ro" href="https://aqa-spec.org/ro/">
+  <link rel="alternate" hreflang="sv" href="https://aqa-spec.org/sv/">
+  <link rel="alternate" hreflang="cs" href="https://aqa-spec.org/cs/">
+  <link rel="alternate" hreflang="zh" href="https://aqa-spec.org/zh/">
+  <link rel="alternate" hreflang="ja" href="https://aqa-spec.org/ja/">
+  <link rel="alternate" hreflang="x-default" href="https://aqa-spec.org/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='80' font-family='sans-serif' fill='%232563eb'>A</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "AQA — AI Question Answer",
+    "url": "https://aqa-spec.org/sv/",
+    "description": "Öppen specifikation för strukturerat Q&A-innehåll optimerat för AI-förståelse och källhänvisning.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "AI Labs Solutions",
+      "url": "https://ai-labs-solutions.fr",
+      "founder": {
+        "@type": "Person",
+        "name": "Davy Abderrahman"
+      }
+    },
+    "license": "https://opensource.org/licenses/MIT"
+  }
+  </script>
+</head>
+<body>
+
+  <nav class="lang-nav">
+    <div class="container">
+      <a href="/">en</a>
+      <a href="/fr/">fr</a>
+      <a href="/de/">de</a>
+      <a href="/es/">es</a>
+      <a href="/it/">it</a>
+      <a href="/pt/">pt</a>
+      <a href="/nl/">nl</a>
+      <a href="/pl/">pl</a>
+      <a href="/ro/">ro</a>
+      <a href="/sv/">sv</a>
+      <a href="/cs/">cs</a>
+      <a href="/zh/">zh</a>
+      <a href="/ja/">ja</a>
+    </div>
+  </nav>
+
+  <header class="site-header">
+    <div class="container">
+      <h1>AQA — AI Question Answer</h1>
+      <p class="subtitle">Öppen specifikation för strukturerat Q&amp;A-innehåll optimerat för AI-förståelse och källhänvisning.</p>
+      <div class="header-meta">
+        <span class="badge">v1.2.2-draft</span>
+        <a href="https://github.com/sarsator/aqa-specification">GitHub</a>
+        <a href="https://opensource.org/licenses/MIT">MIT-licens</a>
+        <span>Schema.org-kompatibel</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section id="problem">
+      <h2>Problemet</h2>
+      <p>FAQ-sidor finns överallt, men Schema.org FAQPage ger AI-system nästan ingenting för att bedöma svarskvalitet. Det saknas datum per fråga, ändringslogg, källhänvisningar per svar och deklarerad underhållsfrekvens. En AI-crawler kan inte avgöra om ett svar skrevs igår eller för tre år sedan, eller om någon fortfarande underhåller det.</p>
+    </section>
+
+    <section id="solution">
+      <h2>Lösningen</h2>
+      <p>AQA är en dokumenterad konvention som berikar befintliga Schema.org-typer (Article, FAQPage, Question, Answer) med en liten uppsättning utökningsegenskaper via ett anpassat JSON-LD-kontext. Inga nya typer uppfinns och inga bakåtinkompatibla ändringar införs. Validatorer som inte förstår AQA-namnrymden ignorerar tyst de extra egenskaperna. Full bakåtkompatibilitet bevaras.</p>
+    </section>
+
+    <section id="signals">
+      <h2>Vad AQA tillför</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Signal</th>
+            <th>Vad den berättar för AI-crawlers</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>dateCreated</code> / <code>dateModified</code></td><td>Exakt aktualitet för varje enskilt svar</td></tr>
+          <tr><td><code>citation</code></td><td>Auktoritativ källa som stöder varje påstående</td></tr>
+          <tr><td><code>changelog</code></td><td>Varför och när varje svar ändrades</td></tr>
+          <tr><td><code>questionVersion</code></td><td>Spåra innehållsförändringar i svar</td></tr>
+          <tr><td><code>updateFrequency</code></td><td>Utgivarens åtagande om innehållsgranskning</td></tr>
+          <tr><td><code>monitoringSources</code></td><td>Vilka flöden och publikationer utgivaren bevakar</td></tr>
+          <tr><td><code>conformanceLevel</code></td><td>Självdeklarerad implementationsdjup</td></tr>
+          <tr><td><code>aiUsagePolicy</code></td><td>Detaljerade AI-rättigheter: RAG, träning, citering, kommersiell användning</td></tr>
+          <tr><td><code>contentSignature</code></td><td>SHA-256-hash som bevisar svarets integritet</td></tr>
+          <tr><td><code>ragSummary</code></td><td>Tokenoptimerad 300-teckens sammanfattning för vektorinbäddning</td></tr>
+          <tr><td><code>audienceAnswers</code></td><td>Målgruppsspecifika svarsvarianter</td></tr>
+          <tr><td><code>dynamicEndpoint</code></td><td>Realtids-API för volatil data</td></tr>
+          <tr><td><code>unansweredQueryEndpoint</code></td><td>Webhook: AI skickar tillbaka saknade frågor</td></tr>
+          <tr><td><code>validThrough</code></td><td>Utgångsdatum per svar</td></tr>
+          <tr><td><code>verificationStatus</code></td><td>Status: verifierad / föråldrad / under granskning</td></tr>
+          <tr><td><code>specVersion</code></td><td>Deklaration av AQA-specifikationsversion</td></tr>
+          <tr><td><code>updateFeedUrl</code></td><td>Pekare till flöde för ändringsdetektering</td></tr>
+          <tr><td><code>pingbackEndpoints</code></td><td>Push-notifieringar vid innehållsuppdateringar</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="conformance">
+      <h2>Överensstämmelsenivåer</h2>
+      <div class="levels">
+        <div class="level-card">
+          <h3>Basic</h3>
+          <p class="effort">Minimal insats</p>
+          <p>Varje svar har en känd ålder och minst en källhänvisning. Dokumentet deklarerar sitt språk och sin upphovsman.</p>
+          <img src="../badges/aqa-basic.svg" alt="AQA Basic-märke" width="90" height="20">
+        </div>
+        <div class="level-card">
+          <h3>Standard</h3>
+          <p class="effort">Måttlig insats</p>
+          <p>Innehållet underhålls aktivt, ändringar spåras med en ändringslogg och branschkontext framgår tydligt via sektorsklassificering och övervakningskällor.</p>
+          <img src="../badges/aqa-standard.svg" alt="AQA Standard-märke" width="106" height="20">
+        </div>
+        <div class="level-card">
+          <h3>Full</h3>
+          <p class="effort">Betydande insats</p>
+          <p>Fullständig provenanskedja: vem som skrev varje svar, vad som ändrades, när, varför och varifrån. Upphovsmannaskap per fråga och versionerade ändringsloggar.</p>
+          <img src="../badges/aqa-full.svg" alt="AQA Full-märke" width="80" height="20">
+        </div>
+      </div>
+    </section>
+
+    <section id="shield">
+      <h2>AQA Shield</h2>
+      <p>När varje fråga i ett dokument inkluderar både <code>aiUsagePolicy</code> och <code>contentSignature</code> kvalificerar sig dokumentet för AQA Shield. Policyn deklarerar tillåten AI-användning (RAG-citering, träning, sammanfattning, citering, kommersiell användning). Signaturen tillhandahåller SHA-256-hashverifiering mot innehållsmanipulation. Shield fungerar på vilken överensstämmelsenivå som helst som en ortogonal garanti som kombinerar juridiskt skydd och kryptografisk integritet.</p>
+      <p><img src="../badges/aqa-shield.svg" alt="AQA Shield-märke" width="94" height="20"></p>
+    </section>
+
+    <section id="quickstart">
+      <h2>Snabbstart</h2>
+      <p>En minimal AQA Basic-implementation:</p>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copyCode(this)">Kopiera</button>
+        <pre><code>{
+  "@context": [
+    "https://schema.org",
+    "https://aqa-spec.org/ns/context.jsonld"
+  ],
+  "@type": "Article",
+  "headline": "Frequently Asked Questions",
+  "author": {
+    "@type": "Organization",
+    "name": "Your Company"
+  },
+  "datePublished": "2024-01-15",
+  "dateModified": "2026-03-20",
+  "inLanguage": "en",
+  "mainEntity": {
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Your question here?",
+        "dateCreated": "2024-01-15",
+        "dateModified": "2026-03-20",
+        "citation": "https://source-url.com/document",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Your answer here."
+        }
+      }
+    ]
+  }
+}</code></pre>
+      </div>
+      <p>Validera din implementation:</p>
+      <pre><code>pip install jsonschema requests
+python validators/validate.py your-file.jsonld</code></pre>
+      <p><a href="https://github.com/sarsator/aqa-specification/blob/master/docs/migration-guide.md">Migreringsguide</a> — steg-för-steg-instruktioner för att lägga till AQA på befintliga FAQ-sidor.</p>
+    </section>
+
+    <section id="features">
+      <h2>V1.2-funktioner</h2>
+      <div class="feature-groups">
+        <div class="feature-group">
+          <h3>Skydd</h3>
+          <ul>
+            <li><code>aiUsagePolicy</code> — detaljerad deklaration av AI-rättigheter</li>
+            <li><code>contentSignature</code> — SHA-256-integritetshash</li>
+          </ul>
+        </div>
+        <div class="feature-group">
+          <h3>Berikning</h3>
+          <ul>
+            <li><code>ragSummary</code> — vektoroptimerad sammanfattning</li>
+            <li><code>audienceAnswers</code> — flerpersonavarianter</li>
+            <li><code>potentialAction</code> — agentbaserade åtgärder</li>
+            <li><code>dynamicEndpoint</code> — realtids-API</li>
+          </ul>
+        </div>
+        <div class="feature-group">
+          <h3>Återkoppling</h3>
+          <ul>
+            <li><code>unansweredQueryEndpoint</code> — webhook för saknade svar</li>
+            <li><code>validThrough</code> — svarets giltighetstid</li>
+            <li><code>verificationStatus</code> — verifierad / föråldrad / under granskning</li>
+          </ul>
+        </div>
+        <div class="feature-group">
+          <h3>Distribution</h3>
+          <ul>
+            <li><code>specVersion</code> — deklaration av specifikationsversion</li>
+            <li><code>updateFeedUrl</code> — pull-baserat ändringsflöde</li>
+            <li><code>pingbackEndpoints</code> — push-notifieringar</li>
+            <li>AQA Hub Protocol — centraliserad uppdateringsaggregering</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources">
+      <h2>Resurser</h2>
+      <ul class="resources-list">
+        <li><a href="https://github.com/sarsator/aqa-specification/blob/master/SPECIFICATION.md">Fullständig specifikation</a> — den kompletta AQA-tekniska specifikationen</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/blob/master/docs/migration-guide.md">Migreringsguide</a> — 8-stegsguide från enkel HTML-FAQ till AQA</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/blob/master/docs/crawler-recommendations.md">Crawler-rekommendationer</a> — vägledning för AI-crawlerutvecklare</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/blob/master/docs/ecosystem-integration.md">Ekosystemintegration</a> — LangChain, LlamaIndex, WordPress-tillägg</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/blob/master/docs/faq-vs-aqa-comparison.md">FAQ vs AQA-jämförelse</a> — sida-vid-sida-signaljämförelse</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/tree/master/validators">Python-validator</a> — validera AQA-block från fil eller URL (0–100-poäng)</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/tree/master/examples">Exempel</a> — 7 implementationer för Basic, Standard och Full</li>
+        <li><a href="https://aqa-spec.org/ns/context.jsonld">JSON-LD-kontext</a> — AQA-namnrymdsdefinitionen</li>
+        <li><a href="https://aqa-spec.org/schemas/aqa-schema.json">JSON Schema</a> — maskinläsbart valideringsschema</li>
+      </ul>
+    </section>
+
+    <section id="philosophy">
+      <h2>Filosofi</h2>
+      <p>AQA är öppet, fritt för alltid och utan leverantörsberoende. Vem som helst kan implementera det, validera det och utöka det. Specifikationen är MIT-licensierad och drivs av gemenskapen.</p>
+      <p>Målet är att göra för AI-synlighet vad OpenGraph gjorde för social delning: ge utgivare ett enkelt, standardiserat sätt att göra sitt innehåll maskinförståeligt utan att bryta något som redan fungerar.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>AQA Specification v1.2.2-draft — <a href="https://opensource.org/licenses/MIT">MIT License</a></p>
+      <p>Created by Davy Abderrahman — <a href="https://ai-labs-solutions.fr">AI Labs Solutions</a></p>
+      <p><a href="https://github.com/sarsator/aqa-specification">GitHub</a></p>
+    </div>
+  </footer>
+
+  <script>
+  function copyCode(btn) {
+    var code = btn.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.textContent).then(function() {
+      btn.textContent = 'Kopierad';
+      setTimeout(function() { btn.textContent = 'Kopiera'; }, 2000);
+    });
+  }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AQA — AI 问答规范 | 面向 AI 优化的 Q&amp;A 开放规范</title>
+  <meta name="description" content="AQA 是一项开放规范，用于为 FAQ 结构化数据添加 AI 系统所需的元数据。兼容 Schema.org，采用 MIT 许可证，永久免费。">
+  <meta property="og:title" content="AQA — AI 问答规范">
+  <meta property="og:description" content="面向 AI 理解与引用的结构化 Q&A 内容开放规范。">
+  <meta property="og:url" content="https://aqa-spec.org/zh/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://aqa-spec.org/zh/">
+  <link rel="alternate" hreflang="en" href="https://aqa-spec.org/">
+  <link rel="alternate" hreflang="fr" href="https://aqa-spec.org/fr/">
+  <link rel="alternate" hreflang="de" href="https://aqa-spec.org/de/">
+  <link rel="alternate" hreflang="es" href="https://aqa-spec.org/es/">
+  <link rel="alternate" hreflang="it" href="https://aqa-spec.org/it/">
+  <link rel="alternate" hreflang="pt" href="https://aqa-spec.org/pt/">
+  <link rel="alternate" hreflang="nl" href="https://aqa-spec.org/nl/">
+  <link rel="alternate" hreflang="pl" href="https://aqa-spec.org/pl/">
+  <link rel="alternate" hreflang="ro" href="https://aqa-spec.org/ro/">
+  <link rel="alternate" hreflang="sv" href="https://aqa-spec.org/sv/">
+  <link rel="alternate" hreflang="cs" href="https://aqa-spec.org/cs/">
+  <link rel="alternate" hreflang="zh" href="https://aqa-spec.org/zh/">
+  <link rel="alternate" hreflang="ja" href="https://aqa-spec.org/ja/">
+  <link rel="alternate" hreflang="x-default" href="https://aqa-spec.org/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='80' font-family='sans-serif' fill='%232563eb'>A</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body { font-family: Inter, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "AQA — AI 问答规范",
+    "url": "https://aqa-spec.org/zh/",
+    "description": "面向 AI 理解与引用的结构化 Q&A 内容开放规范。",
+    "publisher": {
+      "@type": "Organization",
+      "name": "AI Labs Solutions",
+      "url": "https://ai-labs-solutions.fr",
+      "founder": {
+        "@type": "Person",
+        "name": "Davy Abderrahman"
+      }
+    },
+    "license": "https://opensource.org/licenses/MIT"
+  }
+  </script>
+</head>
+<body>
+
+  <nav class="lang-nav">
+    <div class="container">
+      <a href="/">en</a>
+      <a href="/fr/">fr</a>
+      <a href="/de/">de</a>
+      <a href="/es/">es</a>
+      <a href="/it/">it</a>
+      <a href="/pt/">pt</a>
+      <a href="/nl/">nl</a>
+      <a href="/pl/">pl</a>
+      <a href="/ro/">ro</a>
+      <a href="/sv/">sv</a>
+      <a href="/cs/">cs</a>
+      <a href="/zh/">zh</a>
+      <a href="/ja/">ja</a>
+    </div>
+  </nav>
+
+  <header class="site-header">
+    <div class="container">
+      <h1>AQA — AI 问答规范</h1>
+      <p class="subtitle">面向 AI 理解与引用的结构化 Q&amp;A 内容开放规范。</p>
+      <div class="header-meta">
+        <span class="badge">v1.2.2-draft</span>
+        <a href="https://github.com/sarsator/aqa-specification">GitHub</a>
+        <a href="https://opensource.org/licenses/MIT">MIT 许可证</a>
+        <span>兼容 Schema.org</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section id="problem">
+      <h2>问题所在</h2>
+      <p>FAQ 页面随处可见，但 Schema.org 的 FAQPage 几乎没有为 AI 系统提供任何评估答案质量的信息：缺少每条问题的时间戳、变更日志、每条答案的来源引用，以及声明的维护频率。AI 爬虫无法判断某个答案是昨天写的还是三年前写的，也无法知道是否还有人在维护它。</p>
+    </section>
+
+    <section id="solution">
+      <h2>解决方案</h2>
+      <p>AQA 是一套有据可查的约定，通过自定义 JSON-LD 上下文，以少量扩展属性来丰富现有的 Schema.org 类型（Article、FAQPage、Question、Answer）。它不引入新类型，不破坏现有结构。不了解 AQA 命名空间的验证器会静默忽略这些额外属性，完全向后兼容。</p>
+    </section>
+
+    <section id="signals">
+      <h2>AQA 新增的信号</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>信号</th>
+            <th>向 AI 爬虫传达的信息</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>dateCreated</code> / <code>dateModified</code></td><td>每条答案的精确新鲜度</td></tr>
+          <tr><td><code>citation</code></td><td>支撑每项声明的权威来源</td></tr>
+          <tr><td><code>changelog</code></td><td>每条答案的修改原因与时间</td></tr>
+          <tr><td><code>questionVersion</code></td><td>跟踪答案实质性内容的变更</td></tr>
+          <tr><td><code>updateFrequency</code></td><td>发布方的内容审查承诺</td></tr>
+          <tr><td><code>monitoringSources</code></td><td>发布方关注的信息源与出版物</td></tr>
+          <tr><td><code>conformanceLevel</code></td><td>自声明的实现深度</td></tr>
+          <tr><td><code>aiUsagePolicy</code></td><td>细粒度 AI 权限：RAG、训练、引用、商业用途</td></tr>
+          <tr><td><code>contentSignature</code></td><td>证明答案完整性的 SHA-256 哈希值</td></tr>
+          <tr><td><code>ragSummary</code></td><td>用于向量嵌入的 300 字符 token 优化摘要</td></tr>
+          <tr><td><code>audienceAnswers</code></td><td>面向特定受众的答案变体</td></tr>
+          <tr><td><code>dynamicEndpoint</code></td><td>用于动态数据的实时 API</td></tr>
+          <tr><td><code>unansweredQueryEndpoint</code></td><td>Webhook：AI 将未解答问题回传给发布方</td></tr>
+          <tr><td><code>validThrough</code></td><td>每条答案的过期日期</td></tr>
+          <tr><td><code>verificationStatus</code></td><td>状态：已验证 / 已过时 / 审核中</td></tr>
+          <tr><td><code>specVersion</code></td><td>AQA 规范版本声明</td></tr>
+          <tr><td><code>updateFeedUrl</code></td><td>变更检测订阅源指针</td></tr>
+          <tr><td><code>pingbackEndpoints</code></td><td>内容更新时的推送通知</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="conformance">
+      <h2>符合性级别</h2>
+      <div class="levels">
+        <div class="level-card">
+          <h3>Basic（基础）</h3>
+          <p class="effort">最低成本</p>
+          <p>每条答案具有已知的时效性及至少一个来源引用，文档声明其语言和作者。</p>
+          <img src="../badges/aqa-basic.svg" alt="AQA Basic 徽章" width="90" height="20">
+        </div>
+        <div class="level-card">
+          <h3>Standard（标准）</h3>
+          <p class="effort">适度成本</p>
+          <p>内容处于积极维护状态，通过变更日志追踪修改记录，并通过行业分类和监控来源明确声明行业背景。</p>
+          <img src="../badges/aqa-standard.svg" alt="AQA Standard 徽章" width="106" height="20">
+        </div>
+        <div class="level-card">
+          <h3>Full（完整）</h3>
+          <p class="effort">较高成本</p>
+          <p>完整的溯源链：每条答案的作者、变更内容、变更时间、变更原因及信息来源。支持问题级别的署名和带版本号的变更日志。</p>
+          <img src="../badges/aqa-full.svg" alt="AQA Full 徽章" width="80" height="20">
+        </div>
+      </div>
+    </section>
+
+    <section id="shield">
+      <h2>AQA Shield（护盾）</h2>
+      <p>当文档中的每条问题都包含 <code>aiUsagePolicy</code> 和 <code>contentSignature</code> 时，该文档即可获得 AQA Shield 资格。策略声明 AI 的许可用途（RAG 引用、模型训练、内容摘要、直接引用、商业使用）；签名则提供 SHA-256 哈希验证，防止内容被篡改。Shield 可在任意符合性级别上使用，作为兼具法律保护与密码学完整性的正交保证。</p>
+      <p><img src="../badges/aqa-shield.svg" alt="AQA Shield 徽章" width="94" height="20"></p>
+    </section>
+
+    <section id="quickstart">
+      <h2>快速入门</h2>
+      <p>最小化的 AQA Basic 实现示例：</p>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copyCode(this)">复制</button>
+        <pre><code>{
+  "@context": [
+    "https://schema.org",
+    "https://aqa-spec.org/ns/context.jsonld"
+  ],
+  "@type": "Article",
+  "headline": "Frequently Asked Questions",
+  "author": {
+    "@type": "Organization",
+    "name": "Your Company"
+  },
+  "datePublished": "2024-01-15",
+  "dateModified": "2026-03-20",
+  "inLanguage": "en",
+  "mainEntity": {
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Your question here?",
+        "dateCreated": "2024-01-15",
+        "dateModified": "2026-03-20",
+        "citation": "https://source-url.com/document",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Your answer here."
+        }
+      }
+    ]
+  }
+}</code></pre>
+      </div>
+      <p>验证您的实现：</p>
+      <pre><code>pip install jsonschema requests
+python validators/validate.py your-file.jsonld</code></pre>
+      <p><a href="https://github.com/sarsator/aqa-specification/blob/master/docs/migration-guide.md">迁移指南</a> — 将 AQA 添加到现有 FAQ 页面的分步教程。</p>
+    </section>
+
+    <section id="features">
+      <h2>V1.2 新特性</h2>
+      <div class="feature-groups">
+        <div class="feature-group">
+          <h3>保护</h3>
+          <ul>
+            <li><code>aiUsagePolicy</code> — 细粒度 AI 权限声明</li>
+            <li><code>contentSignature</code> — SHA-256 完整性哈希</li>
+          </ul>
+        </div>
+        <div class="feature-group">
+          <h3>内容增强</h3>
+          <ul>
+            <li><code>ragSummary</code> — 向量优化摘要</li>
+            <li><code>audienceAnswers</code> — 多受众答案变体</li>
+            <li><code>potentialAction</code> — 智能体动作</li>
+            <li><code>dynamicEndpoint</code> — 实时 API</li>
+          </ul>
+        </div>
+        <div class="feature-group">
+          <h3>反馈机制</h3>
+          <ul>
+            <li><code>unansweredQueryEndpoint</code> — 未解答问题 Webhook</li>
+            <li><code>validThrough</code> — 答案有效期</li>
+            <li><code>verificationStatus</code> — 已验证 / 已过时 / 审核中</li>
+          </ul>
+        </div>
+        <div class="feature-group">
+          <h3>分发</h3>
+          <ul>
+            <li><code>specVersion</code> — 规范版本声明</li>
+            <li><code>updateFeedUrl</code> — 基于拉取的变更订阅源</li>
+            <li><code>pingbackEndpoints</code> — 推送通知</li>
+            <li>AQA Hub 协议 — 集中式更新聚合</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources">
+      <h2>资源</h2>
+      <ul class="resources-list">
+        <li><a href="https://github.com/sarsator/aqa-specification/blob/master/SPECIFICATION.md">完整规范</a> — AQA 完整技术规范文档</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/blob/master/docs/migration-guide.md">迁移指南</a> — 从纯 HTML FAQ 迁移到 AQA 的 8 步指南</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/blob/master/docs/crawler-recommendations.md">爬虫建议</a> — 面向 AI 爬虫开发者的实施指导</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/blob/master/docs/ecosystem-integration.md">生态系统集成</a> — LangChain、LlamaIndex、WordPress 插件</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/blob/master/docs/faq-vs-aqa-comparison.md">FAQ 与 AQA 对比</a> — 信号的逐项对比分析</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/tree/master/validators">Python 验证器</a> — 从文件或 URL 验证 AQA 块（0–100 评分）</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/tree/master/examples">示例</a> — 涵盖 Basic、Standard 和 Full 的 7 种实现</li>
+        <li><a href="https://aqa-spec.org/ns/context.jsonld">JSON-LD 上下文</a> — AQA 命名空间定义</li>
+        <li><a href="https://aqa-spec.org/schemas/aqa-schema.json">JSON Schema</a> — 机器可读的验证模式</li>
+      </ul>
+    </section>
+
+    <section id="philosophy">
+      <h2>设计理念</h2>
+      <p>AQA 是开放的、永久免费的，不存在供应商锁定。任何人都可以实现它、验证它、扩展它。该规范采用 MIT 许可证，由社区共同驱动。</p>
+      <p>我们的目标是为 AI 可见性做 OpenGraph 为社交分享所做的事：为发布方提供一种简单、标准化的方式，让其内容对机器可理解，同时不破坏任何已有的功能。</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>AQA Specification v1.2.2-draft — <a href="https://opensource.org/licenses/MIT">MIT License</a></p>
+      <p>Created by Davy Abderrahman — <a href="https://ai-labs-solutions.fr">AI Labs Solutions</a></p>
+      <p><a href="https://github.com/sarsator/aqa-specification">GitHub</a></p>
+    </div>
+  </footer>
+
+  <script>
+  function copyCode(btn) {
+    var code = btn.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.textContent).then(function() {
+      btn.textContent = '已复制';
+      setTimeout(function() { btn.textContent = '复制'; }, 2000);
+    });
+  }
+  </script>
+
+</body>
+</html>

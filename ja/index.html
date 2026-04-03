@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AQA — AI Question Answer | AI最適化Q&amp;Aのオープン仕様</title>
+  <meta name="description" content="AQAは、AIシステムが必要とするメタデータでFAQ構造化データを拡充するためのオープン仕様です。Schema.org互換、MITライセンス、永久無料。">
+  <meta property="og:title" content="AQA — AI Question Answer">
+  <meta property="og:description" content="AIの理解と引用に最適化された構造化Q&Aコンテンツのオープン仕様。">
+  <meta property="og:url" content="https://aqa-spec.org/ja/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://aqa-spec.org/ja/">
+  <link rel="alternate" hreflang="en" href="https://aqa-spec.org/">
+  <link rel="alternate" hreflang="fr" href="https://aqa-spec.org/fr/">
+  <link rel="alternate" hreflang="de" href="https://aqa-spec.org/de/">
+  <link rel="alternate" hreflang="es" href="https://aqa-spec.org/es/">
+  <link rel="alternate" hreflang="it" href="https://aqa-spec.org/it/">
+  <link rel="alternate" hreflang="pt" href="https://aqa-spec.org/pt/">
+  <link rel="alternate" hreflang="nl" href="https://aqa-spec.org/nl/">
+  <link rel="alternate" hreflang="pl" href="https://aqa-spec.org/pl/">
+  <link rel="alternate" hreflang="ro" href="https://aqa-spec.org/ro/">
+  <link rel="alternate" hreflang="sv" href="https://aqa-spec.org/sv/">
+  <link rel="alternate" hreflang="cs" href="https://aqa-spec.org/cs/">
+  <link rel="alternate" hreflang="zh" href="https://aqa-spec.org/zh/">
+  <link rel="alternate" hreflang="ja" href="https://aqa-spec.org/ja/">
+  <link rel="alternate" hreflang="x-default" href="https://aqa-spec.org/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='80' font-family='sans-serif' fill='%232563eb'>A</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body { font-family: Inter, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "AQA — AI Question Answer",
+    "url": "https://aqa-spec.org/ja/",
+    "description": "AIの理解と引用に最適化された構造化Q&Aコンテンツのオープン仕様。",
+    "publisher": {
+      "@type": "Organization",
+      "name": "AI Labs Solutions",
+      "url": "https://ai-labs-solutions.fr",
+      "founder": {
+        "@type": "Person",
+        "name": "Davy Abderrahman"
+      }
+    },
+    "license": "https://opensource.org/licenses/MIT"
+  }
+  </script>
+</head>
+<body>
+
+  <nav class="lang-nav">
+    <div class="container">
+      <a href="/">en</a>
+      <a href="/fr/">fr</a>
+      <a href="/de/">de</a>
+      <a href="/es/">es</a>
+      <a href="/it/">it</a>
+      <a href="/pt/">pt</a>
+      <a href="/nl/">nl</a>
+      <a href="/pl/">pl</a>
+      <a href="/ro/">ro</a>
+      <a href="/sv/">sv</a>
+      <a href="/cs/">cs</a>
+      <a href="/zh/">zh</a>
+      <a href="/ja/">ja</a>
+    </div>
+  </nav>
+
+  <header class="site-header">
+    <div class="container">
+      <h1>AQA — AI Question Answer</h1>
+      <p class="subtitle">AIの理解と引用に最適化された構造化Q&amp;Aコンテンツのオープン仕様。</p>
+      <div class="header-meta">
+        <span class="badge">v1.2.2-draft</span>
+        <a href="https://github.com/sarsator/aqa-specification">GitHub</a>
+        <a href="https://opensource.org/licenses/MIT">MITライセンス</a>
+        <span>Schema.org互換</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section id="problem">
+      <h2>課題</h2>
+      <p>FAQページはいたるところに存在しますが、Schema.orgのFAQPageはAIシステムが回答品質を評価するためのシグナルをほとんど提供していません。質問ごとの日付、変更履歴、回答ごとの出典引用、更新頻度の宣言がいずれも欠如しています。AIクローラーは、ある回答が昨日書かれたものか3年前のものかを判断できず、誰かが今もメンテナンスしているかどうかも把握できません。</p>
+    </section>
+
+    <section id="solution">
+      <h2>解決策</h2>
+      <p>AQAは、カスタムJSON-LDコンテキストを通じて、既存のSchema.orgタイプ（Article、FAQPage、Question、Answer）を少数の拡張プロパティで拡充するためのドキュメント化された規約です。新しい型を発明せず、破壊的変更も加えません。AQA名前空間を解釈できないバリデーターは、追加プロパティを静かに無視します。完全な後方互換性が保たれます。</p>
+    </section>
+
+    <section id="signals">
+      <h2>AQAが追加するシグナル</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>シグナル</th>
+            <th>AIクローラーへの伝達内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>dateCreated</code> / <code>dateModified</code></td><td>各回答の正確な鮮度</td></tr>
+          <tr><td><code>citation</code></td><td>各主張を裏付ける権威ある出典</td></tr>
+          <tr><td><code>changelog</code></td><td>各回答がいつ・なぜ変更されたか</td></tr>
+          <tr><td><code>questionVersion</code></td><td>回答内容の実質的な変更の追跡</td></tr>
+          <tr><td><code>updateFrequency</code></td><td>パブリッシャーのコンテンツレビュー頻度の宣言</td></tr>
+          <tr><td><code>monitoringSources</code></td><td>パブリッシャーが監視しているフィードと出版物</td></tr>
+          <tr><td><code>conformanceLevel</code></td><td>自己申告による実装の深度</td></tr>
+          <tr><td><code>aiUsagePolicy</code></td><td>細粒度のAI利用権限：RAG、学習、引用、商用利用</td></tr>
+          <tr><td><code>contentSignature</code></td><td>回答の完全性を証明するSHA-256ハッシュ</td></tr>
+          <tr><td><code>ragSummary</code></td><td>ベクトル埋め込み用のトークン最適化300文字サマリー</td></tr>
+          <tr><td><code>audienceAnswers</code></td><td>特定オーディエンス向けの回答バリアント</td></tr>
+          <tr><td><code>dynamicEndpoint</code></td><td>揮発性データ向けのリアルタイムAPI</td></tr>
+          <tr><td><code>unansweredQueryEndpoint</code></td><td>Webhook：AIが未回答の質問をパブリッシャーに返送</td></tr>
+          <tr><td><code>validThrough</code></td><td>回答ごとの有効期限</td></tr>
+          <tr><td><code>verificationStatus</code></td><td>ステータス：検証済み／旧版／審査中</td></tr>
+          <tr><td><code>specVersion</code></td><td>AQA仕様バージョンの宣言</td></tr>
+          <tr><td><code>updateFeedUrl</code></td><td>変更検知フィードへのポインタ</td></tr>
+          <tr><td><code>pingbackEndpoints</code></td><td>コンテンツ更新時のプッシュ通知</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="conformance">
+      <h2>適合レベル</h2>
+      <div class="levels">
+        <div class="level-card">
+          <h3>Basic（基本）</h3>
+          <p class="effort">最小限の実装コスト</p>
+          <p>すべての回答に既知の作成日と少なくとも1件の出典引用が含まれています。文書は言語と著者を宣言します。</p>
+          <img src="../badges/aqa-basic.svg" alt="AQA Basicバッジ" width="90" height="20">
+        </div>
+        <div class="level-card">
+          <h3>Standard（標準）</h3>
+          <p class="effort">中程度の実装コスト</p>
+          <p>コンテンツが積極的にメンテナンスされ、変更履歴で更新が追跡され、セクター分類と監視ソースによって業界コンテキストが明示されています。</p>
+          <img src="../badges/aqa-standard.svg" alt="AQA Standardバッジ" width="106" height="20">
+        </div>
+        <div class="level-card">
+          <h3>Full（完全）</h3>
+          <p class="effort">高度な実装コスト</p>
+          <p>完全な出自チェーン：誰が各回答を書き、何が変更され、いつ、なぜ、どこから来たのか。質問単位の著者情報とバージョン管理された変更履歴。</p>
+          <img src="../badges/aqa-full.svg" alt="AQA Fullバッジ" width="80" height="20">
+        </div>
+      </div>
+    </section>
+
+    <section id="shield">
+      <h2>AQA Shield（シールド）</h2>
+      <p>文書内のすべての質問に <code>aiUsagePolicy</code> と <code>contentSignature</code> の両方が含まれている場合、その文書はAQA Shieldの資格を得ます。ポリシーは許可されたAI利用（RAG引用、モデル学習、要約、引用、商用利用）を宣言します。署名はコンテンツ改ざんに対するSHA-256ハッシュ検証を提供します。Shieldは任意の適合レベルで、法的保護と暗号学的整合性を組み合わせた直交的な保証として機能します。</p>
+      <p><img src="../badges/aqa-shield.svg" alt="AQA Shieldバッジ" width="94" height="20"></p>
+    </section>
+
+    <section id="quickstart">
+      <h2>クイックスタート</h2>
+      <p>AQA Basicの最小実装例：</p>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copyCode(this)">コピー</button>
+        <pre><code>{
+  "@context": [
+    "https://schema.org",
+    "https://aqa-spec.org/ns/context.jsonld"
+  ],
+  "@type": "Article",
+  "headline": "Frequently Asked Questions",
+  "author": {
+    "@type": "Organization",
+    "name": "Your Company"
+  },
+  "datePublished": "2024-01-15",
+  "dateModified": "2026-03-20",
+  "inLanguage": "en",
+  "mainEntity": {
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Your question here?",
+        "dateCreated": "2024-01-15",
+        "dateModified": "2026-03-20",
+        "citation": "https://source-url.com/document",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Your answer here."
+        }
+      }
+    ]
+  }
+}</code></pre>
+      </div>
+      <p>実装を検証する：</p>
+      <pre><code>pip install jsonschema requests
+python validators/validate.py your-file.jsonld</code></pre>
+      <p><a href="https://github.com/sarsator/aqa-specification/blob/master/docs/migration-guide.md">移行ガイド</a> — 既存のFAQページにAQAを追加するためのステップバイステップ手順。</p>
+    </section>
+
+    <section id="features">
+      <h2>V1.2の新機能</h2>
+      <div class="feature-groups">
+        <div class="feature-group">
+          <h3>保護</h3>
+          <ul>
+            <li><code>aiUsagePolicy</code> — 細粒度AI利用権限の宣言</li>
+            <li><code>contentSignature</code> — SHA-256整合性ハッシュ</li>
+          </ul>
+        </div>
+        <div class="feature-group">
+          <h3>拡充</h3>
+          <ul>
+            <li><code>ragSummary</code> — ベクトル最適化サマリー</li>
+            <li><code>audienceAnswers</code> — マルチペルソナ回答バリアント</li>
+            <li><code>potentialAction</code> — エージェント型アクション</li>
+            <li><code>dynamicEndpoint</code> — リアルタイムAPI</li>
+          </ul>
+        </div>
+        <div class="feature-group">
+          <h3>フィードバック</h3>
+          <ul>
+            <li><code>unansweredQueryEndpoint</code> — 未回答質問用Webhook</li>
+            <li><code>validThrough</code> — 回答の有効期限</li>
+            <li><code>verificationStatus</code> — 検証済み／旧版／審査中</li>
+          </ul>
+        </div>
+        <div class="feature-group">
+          <h3>配信</h3>
+          <ul>
+            <li><code>specVersion</code> — 仕様バージョン宣言</li>
+            <li><code>updateFeedUrl</code> — プル型変更フィード</li>
+            <li><code>pingbackEndpoints</code> — プッシュ通知</li>
+            <li>AQA Hubプロトコル — 一元化された更新集約</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources">
+      <h2>リソース</h2>
+      <ul class="resources-list">
+        <li><a href="https://github.com/sarsator/aqa-specification/blob/master/SPECIFICATION.md">完全仕様書</a> — AQA技術仕様の全文</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/blob/master/docs/migration-guide.md">移行ガイド</a> — 素のHTML FAQからAQAへの8ステップガイド</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/blob/master/docs/crawler-recommendations.md">クローラー向け推奨事項</a> — AIクローラー開発者へのガイダンス</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/blob/master/docs/ecosystem-integration.md">エコシステム統合</a> — LangChain、LlamaIndex、WordPressプラグイン</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/blob/master/docs/faq-vs-aqa-comparison.md">FAQ vs AQA比較</a> — シグナルの並列比較</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/tree/master/validators">Pythonバリデーター</a> — ファイルまたはURLからAQAブロックを検証（0〜100スコア）</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/tree/master/examples">サンプル実装</a> — Basic・Standard・Fullにわたる7種類の実装例</li>
+        <li><a href="https://aqa-spec.org/ns/context.jsonld">JSON-LDコンテキスト</a> — AQA名前空間定義</li>
+        <li><a href="https://aqa-spec.org/schemas/aqa-schema.json">JSONスキーマ</a> — 機械可読な検証スキーマ</li>
+      </ul>
+    </section>
+
+    <section id="philosophy">
+      <h2>設計思想</h2>
+      <p>AQAはオープンで、永久無料であり、ベンダーロックインがありません。誰でも実装・検証・拡張できます。仕様はMITライセンスのもとコミュニティ主導で管理されています。</p>
+      <p>私たちの目標は、OpenGraphがソーシャルシェアリングのためにしたことを、AI可視性のために実現することです。つまり、既存の動作を壊すことなく、パブリッシャーがコンテンツをマシンリーダブルにするためのシンプルで標準化された手段を提供することです。</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>AQA Specification v1.2.2-draft — <a href="https://opensource.org/licenses/MIT">MIT License</a></p>
+      <p>Created by Davy Abderrahman — <a href="https://ai-labs-solutions.fr">AI Labs Solutions</a></p>
+      <p><a href="https://github.com/sarsator/aqa-specification">GitHub</a></p>
+    </div>
+  </footer>
+
+  <script>
+  function copyCode(btn) {
+    var code = btn.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.textContent).then(function() {
+      btn.textContent = 'コピー済み';
+      setTimeout(function() { btn.textContent = 'コピー'; }, 2000);
+    });
+  }
+  </script>
+
+</body>
+</html>

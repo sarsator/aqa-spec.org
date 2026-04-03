@@ -33,6 +33,27 @@ a:hover {
   padding: 0 1.5rem;
 }
 
+/* Language nav */
+.lang-nav {
+  background: #1a1a2e;
+  padding: 0.4rem 0;
+  font-size: 0.8rem;
+}
+
+.lang-nav a {
+  color: #9ca3af;
+  margin-right: 0.75rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.lang-nav a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
 /* Header */
 .site-header {
   background: #f9fafb;

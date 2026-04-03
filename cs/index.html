@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AQA — AI Question Answer | Otevřená specifikace pro Q&amp;A optimalizované pro AI</title>
+  <meta name="description" content="AQA je otevřená specifikace pro obohacení strukturovaných dat FAQ o metadata, která AI systémy potřebují. Kompatibilní se Schema.org, licencováno pod MIT, navždy zdarma.">
+  <meta property="og:title" content="AQA — AI Question Answer">
+  <meta property="og:description" content="Otevřená specifikace pro strukturovaný Q&A obsah optimalizovaný pro porozumění a citování ze strany AI.">
+  <meta property="og:url" content="https://aqa-spec.org/cs/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://aqa-spec.org/cs/">
+  <link rel="alternate" hreflang="en" href="https://aqa-spec.org/">
+  <link rel="alternate" hreflang="fr" href="https://aqa-spec.org/fr/">
+  <link rel="alternate" hreflang="de" href="https://aqa-spec.org/de/">
+  <link rel="alternate" hreflang="es" href="https://aqa-spec.org/es/">
+  <link rel="alternate" hreflang="it" href="https://aqa-spec.org/it/">
+  <link rel="alternate" hreflang="pt" href="https://aqa-spec.org/pt/">
+  <link rel="alternate" hreflang="nl" href="https://aqa-spec.org/nl/">
+  <link rel="alternate" hreflang="pl" href="https://aqa-spec.org/pl/">
+  <link rel="alternate" hreflang="ro" href="https://aqa-spec.org/ro/">
+  <link rel="alternate" hreflang="sv" href="https://aqa-spec.org/sv/">
+  <link rel="alternate" hreflang="cs" href="https://aqa-spec.org/cs/">
+  <link rel="alternate" hreflang="zh" href="https://aqa-spec.org/zh/">
+  <link rel="alternate" hreflang="ja" href="https://aqa-spec.org/ja/">
+  <link rel="alternate" hreflang="x-default" href="https://aqa-spec.org/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='80' font-family='sans-serif' fill='%232563eb'>A</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "AQA — AI Question Answer",
+    "url": "https://aqa-spec.org/cs/",
+    "description": "Otevřená specifikace pro strukturovaný Q&A obsah optimalizovaný pro porozumění a citování ze strany AI.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "AI Labs Solutions",
+      "url": "https://ai-labs-solutions.fr",
+      "founder": {
+        "@type": "Person",
+        "name": "Davy Abderrahman"
+      }
+    },
+    "license": "https://opensource.org/licenses/MIT"
+  }
+  </script>
+</head>
+<body>
+
+  <nav class="lang-nav">
+    <div class="container">
+      <a href="/">en</a>
+      <a href="/fr/">fr</a>
+      <a href="/de/">de</a>
+      <a href="/es/">es</a>
+      <a href="/it/">it</a>
+      <a href="/pt/">pt</a>
+      <a href="/nl/">nl</a>
+      <a href="/pl/">pl</a>
+      <a href="/ro/">ro</a>
+      <a href="/sv/">sv</a>
+      <a href="/cs/">cs</a>
+      <a href="/zh/">zh</a>
+      <a href="/ja/">ja</a>
+    </div>
+  </nav>
+
+  <header class="site-header">
+    <div class="container">
+      <h1>AQA — AI Question Answer</h1>
+      <p class="subtitle">Otevřená specifikace pro strukturovaný Q&amp;A obsah optimalizovaný pro porozumění a citování ze strany AI.</p>
+      <div class="header-meta">
+        <span class="badge">v1.2.2-draft</span>
+        <a href="https://github.com/sarsator/aqa-specification">GitHub</a>
+        <a href="https://opensource.org/licenses/MIT">Licence MIT</a>
+        <span>Kompatibilní se Schema.org</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section id="problem">
+      <h2>Problém</h2>
+      <p>Stránky s FAQ jsou všude, ale Schema.org FAQPage poskytuje AI systémům téměř žádné informace pro hodnocení kvality odpovědí. Chybí data pro jednotlivé otázky, záznamy o změnách, citace zdrojů pro jednotlivé odpovědi a deklarovaná frekvence údržby. AI prohledávač nedokáže zjistit, zda byla odpověď napsána včera nebo před třemi lety, ani zda ji někdo stále spravuje.</p>
+    </section>
+
+    <section id="solution">
+      <h2>Řešení</h2>
+      <p>AQA je zdokumentovaná konvence, která obohacuje stávající typy Schema.org (Article, FAQPage, Question, Answer) o malou sadu rozšiřujících vlastností prostřednictvím vlastního JSON-LD kontextu. Nevymýšlejí se žádné nové typy ani se nezavádějí žádné zpětně nekompatibilní změny. Validátory, které AQA jmenný prostor neznají, navíc tiše ignorují. Plná zpětná kompatibilita je zachována.</p>
+    </section>
+
+    <section id="signals">
+      <h2>Co AQA přidává</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Signál</th>
+            <th>Co sděluje AI prohledávačům</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>dateCreated</code> / <code>dateModified</code></td><td>Přesná aktuálnost každé jednotlivé odpovědi</td></tr>
+          <tr><td><code>citation</code></td><td>Autoritativní zdroj podporující každé tvrzení</td></tr>
+          <tr><td><code>changelog</code></td><td>Proč a kdy byla každá odpověď upravena</td></tr>
+          <tr><td><code>questionVersion</code></td><td>Sledování věcných změn v odpovědích</td></tr>
+          <tr><td><code>updateFrequency</code></td><td>Závazek vydavatele k průběžné revizi obsahu</td></tr>
+          <tr><td><code>monitoringSources</code></td><td>Které zdroje a publikace vydavatel sleduje</td></tr>
+          <tr><td><code>conformanceLevel</code></td><td>Vlastní deklarace hloubky implementace</td></tr>
+          <tr><td><code>aiUsagePolicy</code></td><td>Podrobná práva pro AI: RAG, trénink, citace, komerční využití</td></tr>
+          <tr><td><code>contentSignature</code></td><td>SHA-256 hash prokazující integritu odpovědi</td></tr>
+          <tr><td><code>ragSummary</code></td><td>Tokenově optimalizované shrnutí o 300 znacích pro vektorové vkládání</td></tr>
+          <tr><td><code>audienceAnswers</code></td><td>Varianty odpovědí pro konkrétní cílové skupiny</td></tr>
+          <tr><td><code>dynamicEndpoint</code></td><td>API v reálném čase pro proměnlivá data</td></tr>
+          <tr><td><code>unansweredQueryEndpoint</code></td><td>Webhook: AI odesílá zpět chybějící otázky</td></tr>
+          <tr><td><code>validThrough</code></td><td>Datum vypršení platnosti pro každou odpověď</td></tr>
+          <tr><td><code>verificationStatus</code></td><td>Stav: ověřeno / zastaralé / v přezkumu</td></tr>
+          <tr><td><code>specVersion</code></td><td>Deklarace verze specifikace AQA</td></tr>
+          <tr><td><code>updateFeedUrl</code></td><td>Ukazatel na zdroj pro detekci změn</td></tr>
+          <tr><td><code>pingbackEndpoints</code></td><td>Push notifikace při aktualizacích obsahu</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="conformance">
+      <h2>Úrovně shody</h2>
+      <div class="levels">
+        <div class="level-card">
+          <h3>Basic</h3>
+          <p class="effort">Minimální úsilí</p>
+          <p>Každá odpověď má známé stáří a alespoň jeden odkaz na zdroj. Dokument deklaruje svůj jazyk a autora.</p>
+          <img src="../badges/aqa-basic.svg" alt="Odznak AQA Basic" width="90" height="20">
+        </div>
+        <div class="level-card">
+          <h3>Standard</h3>
+          <p class="effort">Střední úsilí</p>
+          <p>Obsah je aktivně udržován, změny jsou sledovány v záznamu o změnách a oborový kontext je explicitní prostřednictvím klasifikace sektoru a sledovaných zdrojů.</p>
+          <img src="../badges/aqa-standard.svg" alt="Odznak AQA Standard" width="106" height="20">
+        </div>
+        <div class="level-card">
+          <h3>Full</h3>
+          <p class="effort">Značné úsilí</p>
+          <p>Úplný řetězec původu: kdo napsal každou odpověď, co bylo změněno, kdy, proč a odkud. Autorství na úrovni otázek a verzované záznamy o změnách.</p>
+          <img src="../badges/aqa-full.svg" alt="Odznak AQA Full" width="80" height="20">
+        </div>
+      </div>
+    </section>
+
+    <section id="shield">
+      <h2>AQA Shield</h2>
+      <p>Pokud každá otázka v dokumentu obsahuje jak <code>aiUsagePolicy</code>, tak <code>contentSignature</code>, dokument se kvalifikuje pro AQA Shield. Politika deklaruje povolená využití AI (citace v RAG, trénink, sumarizace, citování, komerční použití). Podpis zajišťuje ověření pomocí SHA-256 hashe proti pozměnění obsahu. Shield funguje na libovolné úrovni shody jako ortogonální záruka kombinující právní ochranu a kryptografickou integritu.</p>
+      <p><img src="../badges/aqa-shield.svg" alt="Odznak AQA Shield" width="94" height="20"></p>
+    </section>
+
+    <section id="quickstart">
+      <h2>Rychlý start</h2>
+      <p>Minimální implementace AQA Basic:</p>
+      <div class="code-block">
+        <button class="copy-btn" onclick="copyCode(this)">Kopírovat</button>
+        <pre><code>{
+  "@context": [
+    "https://schema.org",
+    "https://aqa-spec.org/ns/context.jsonld"
+  ],
+  "@type": "Article",
+  "headline": "Frequently Asked Questions",
+  "author": {
+    "@type": "Organization",
+    "name": "Your Company"
+  },
+  "datePublished": "2024-01-15",
+  "dateModified": "2026-03-20",
+  "inLanguage": "en",
+  "mainEntity": {
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Your question here?",
+        "dateCreated": "2024-01-15",
+        "dateModified": "2026-03-20",
+        "citation": "https://source-url.com/document",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Your answer here."
+        }
+      }
+    ]
+  }
+}</code></pre>
+      </div>
+      <p>Ověřte svou implementaci:</p>
+      <pre><code>pip install jsonschema requests
+python validators/validate.py your-file.jsonld</code></pre>
+      <p><a href="https://github.com/sarsator/aqa-specification/blob/master/docs/migration-guide.md">Průvodce migrací</a> — podrobné pokyny pro přidání AQA na stávající stránky FAQ.</p>
+    </section>
+
+    <section id="features">
+      <h2>Funkce verze V1.2</h2>
+      <div class="feature-groups">
+        <div class="feature-group">
+          <h3>Ochrana</h3>
+          <ul>
+            <li><code>aiUsagePolicy</code> — podrobná deklarace práv pro AI</li>
+            <li><code>contentSignature</code> — SHA-256 hash pro integritu</li>
+          </ul>
+        </div>
+        <div class="feature-group">
+          <h3>Obohacení</h3>
+          <ul>
+            <li><code>ragSummary</code> — vektorově optimalizované shrnutí</li>
+            <li><code>audienceAnswers</code> — varianty pro více person</li>
+            <li><code>potentialAction</code> — agentní akce</li>
+            <li><code>dynamicEndpoint</code> — API v reálném čase</li>
+          </ul>
+        </div>
+        <div class="feature-group">
+          <h3>Zpětná vazba</h3>
+          <ul>
+            <li><code>unansweredQueryEndpoint</code> — webhook pro chybějící odpovědi</li>
+            <li><code>validThrough</code> — vypršení platnosti odpovědi</li>
+            <li><code>verificationStatus</code> — ověřeno / zastaralé / v přezkumu</li>
+          </ul>
+        </div>
+        <div class="feature-group">
+          <h3>Distribuce</h3>
+          <ul>
+            <li><code>specVersion</code> — deklarace verze specifikace</li>
+            <li><code>updateFeedUrl</code> — pull-based zdroj změn</li>
+            <li><code>pingbackEndpoints</code> — push notifikace</li>
+            <li>AQA Hub Protocol — centralizovaná agregace aktualizací</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources">
+      <h2>Zdroje</h2>
+      <ul class="resources-list">
+        <li><a href="https://github.com/sarsator/aqa-specification/blob/master/SPECIFICATION.md">Úplná specifikace</a> — kompletní technická specifikace AQA</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/blob/master/docs/migration-guide.md">Průvodce migrací</a> — 8krokový průvodce od prosté HTML FAQ po AQA</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/blob/master/docs/crawler-recommendations.md">Doporučení pro prohledávače</a> — pokyny pro vývojáře AI crawlerů</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/blob/master/docs/ecosystem-integration.md">Integrace do ekosystému</a> — LangChain, LlamaIndex, WordPress plugin</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/blob/master/docs/faq-vs-aqa-comparison.md">Srovnání FAQ vs AQA</a> — porovnání signálů vedle sebe</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/tree/master/validators">Python validátor</a> — validace AQA bloků ze souboru nebo URL (skóre 0–100)</li>
+        <li><a href="https://github.com/sarsator/aqa-specification/tree/master/examples">Příklady</a> — 7 implementací pro Basic, Standard a Full</li>
+        <li><a href="https://aqa-spec.org/ns/context.jsonld">JSON-LD kontext</a> — definice jmenného prostoru AQA</li>
+        <li><a href="https://aqa-spec.org/schemas/aqa-schema.json">JSON Schema</a> — strojově čitelné validační schéma</li>
+      </ul>
+    </section>
+
+    <section id="philosophy">
+      <h2>Filozofie</h2>
+      <p>AQA je otevřené, navždy zdarma a bez závislosti na konkrétním dodavateli. Kdokoli jej může implementovat, validovat a rozšiřovat. Specifikace je licencována pod MIT a je řízena komunitou.</p>
+      <p>Cílem je udělat pro viditelnost v AI to, co OpenGraph udělal pro sdílení na sociálních sítích: poskytnout vydavatelům jednoduchý, standardizovaný způsob, jak učinit svůj obsah srozumitelným pro stroje, aniž by narušili cokoli, co již funguje.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>AQA Specification v1.2.2-draft — <a href="https://opensource.org/licenses/MIT">MIT License</a></p>
+      <p>Created by Davy Abderrahman — <a href="https://ai-labs-solutions.fr">AI Labs Solutions</a></p>
+      <p><a href="https://github.com/sarsator/aqa-specification">GitHub</a></p>
+    </div>
+  </footer>
+
+  <script>
+  function copyCode(btn) {
+    var code = btn.parentElement.querySelector('code');
+    navigator.clipboard.writeText(code.textContent).then(function() {
+      btn.textContent = 'Zkopírováno';
+      setTimeout(function() { btn.textContent = 'Kopírovat'; }, 2000);
+    });
+  }
+  </script>
+
+</body>
+</html>
