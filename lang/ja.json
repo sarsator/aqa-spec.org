@@ -1,0 +1,123 @@
+{
+  "lang": "ja",
+  "title": "AQA — AI Question Answer | AI最適化Q&Aのオープン仕様",
+  "meta_description": "AQAは、AIシステムが必要とするメタデータでFAQ構造化データを強化するオープン仕様です。Schema.org互換、MITライセンス、永久無料。",
+  "og_title": "AQA — AI Question Answer",
+  "og_description": "AIの理解と引用に最適化された構造化Q&Aコンテンツのオープン仕様。",
+  "h1": "AQA — AI Question Answer",
+  "subtitle": "AIの理解と引用に最適化された構造化Q&Aコンテンツのオープン仕様。",
+  "schema_compatible": "Schema.org互換",
+  "problem_title": "課題",
+  "problem_text": "FAQページは至る所に存在しますが、Schema.orgのFAQPageはAIシステムが回答の品質を評価するためにほとんど何も提供していません。質問ごとの日付がなく、変更履歴もなく、回答ごとのソース引用もなく、メンテナンス頻度の宣言もありません。AIクローラーは、ある回答が昨日書かれたのか3年前に書かれたのか、あるいは誰かが今もメンテナンスし続けているのかを判断することができません。",
+  "solution_title": "解決策",
+  "solution_text": "AQAは、カスタムJSON-LDコンテキストを通じて、既存のSchema.orgタイプ（Article、FAQPage、Question、Answer）に少数の拡張プロパティを追加する文書化された規約です。新しいタイプは発明されず、破壊的な変更も導入されません。AQA名前空間を理解しないバリデーターは、追加プロパティをサイレントに無視します。完全な後方互換性が保持されます。",
+  "signals_title": "AQAが追加するもの",
+  "signals_col_signal": "シグナル",
+  "signals_col_description": "AIクローラーへの伝達内容",
+  "signals": [
+    {"signal": "<code>dateCreated</code> / <code>dateModified</code>", "desc": "各回答の正確な鮮度"},
+    {"signal": "<code>citation</code>", "desc": "各主張を裏付ける権威ある出典"},
+    {"signal": "<code>changelog</code>", "desc": "各回答が修正された理由と日時"},
+    {"signal": "<code>questionVersion</code>", "desc": "回答内容の変更を追跡"},
+    {"signal": "<code>updateFrequency</code>", "desc": "発行者のコンテンツレビューへのコミットメント"},
+    {"signal": "<code>monitoringSources</code>", "desc": "発行者が監視しているフィードと出版物"},
+    {"signal": "<code>conformanceLevel</code>", "desc": "自己申告による実装の深さ"},
+    {"signal": "<code>aiUsagePolicy</code>", "desc": "詳細なAI権限：RAG、学習、引用、商用利用"},
+    {"signal": "<code>contentSignature</code>", "desc": "回答の完全性を証明するSHA-256ハッシュ"},
+    {"signal": "<code>ragSummary</code>", "desc": "ベクトル埋め込み用のトークン最適化300文字サマリー"},
+    {"signal": "<code>audienceAnswers</code>", "desc": "対象読者別の回答バリアント"},
+    {"signal": "<code>dynamicEndpoint</code>", "desc": "揮発性データ向けリアルタイムAPI"},
+    {"signal": "<code>unansweredQueryEndpoint</code>", "desc": "Webhook：AIが未回答の質問を送り返す"},
+    {"signal": "<code>validThrough</code>", "desc": "回答ごとの有効期限"},
+    {"signal": "<code>verificationStatus</code>", "desc": "verified / outdated / under-review ステータス"},
+    {"signal": "<code>specVersion</code>", "desc": "AQA仕様バージョンの宣言"},
+    {"signal": "<code>updateFeedUrl</code>", "desc": "変更検知フィードへのポインタ"},
+    {"signal": "<code>pingbackEndpoints</code>", "desc": "コンテンツ更新時のプッシュ通知"}
+  ],
+  "conformance_title": "適合性レベル",
+  "basic_title": "Basic",
+  "basic_effort": "最小限の労力",
+  "basic_desc": "すべての回答に既知の作成日と少なくとも1つのソース引用があります。ドキュメントは言語と著者を宣言します。",
+  "standard_title": "Standard",
+  "standard_effort": "中程度の労力",
+  "standard_desc": "コンテンツは積極的にメンテナンスされ、変更は変更履歴で追跡され、業界コンテキストはセクター分類とモニタリングソースによって明示されます。",
+  "full_title": "Full",
+  "full_effort": "相当な労力",
+  "full_desc": "完全なプロベナンスチェーン：各回答を誰が書き、何が、いつ、なぜ、どこから変更されたか。質問レベルの著者情報とバージョン管理された変更履歴。",
+  "shield_title": "AQA Shield",
+  "shield_text": "ドキュメント内のすべての質問に <code>aiUsagePolicy</code> と <code>contentSignature</code> の両方が含まれている場合、そのドキュメントはAQA Shieldの認定を受けます。ポリシーは許可されるAI利用（RAG引用、学習、要約、引用、商用利用）を宣言します。署名はコンテンツ改ざんに対するSHA-256ハッシュ検証を提供します。Shieldは任意の適合性レベルで、法的保護と暗号学的完全性を組み合わせた直交的な保証として機能します。",
+  "quickstart_title": "クイックスタート",
+  "quickstart_intro": "最小限のAQA Basic実装：",
+  "quickstart_validate": "実装を検証する：",
+  "quickstart_migration": "移行ガイド",
+  "quickstart_migration_desc": "既存のFAQページにAQAを追加するためのステップバイステップの手順。",
+  "copy_btn": "コピー",
+  "copy_btn_done": "コピー済み",
+  "features_title": "V1.2 機能",
+  "protection_title": "保護",
+  "protection_items": [
+    "<code>aiUsagePolicy</code> — 詳細なAI権限宣言",
+    "<code>contentSignature</code> — SHA-256整合性ハッシュ"
+  ],
+  "enrichment_title": "エンリッチメント",
+  "enrichment_items": [
+    "<code>ragSummary</code> — ベクトル最適化サマリー",
+    "<code>audienceAnswers</code> — マルチペルソナバリアント",
+    "<code>potentialAction</code> — エージェント型アクション",
+    "<code>dynamicEndpoint</code> — リアルタイムAPI"
+  ],
+  "feedback_title": "フィードバック",
+  "feedback_items": [
+    "<code>unansweredQueryEndpoint</code> — 未回答Webhook",
+    "<code>validThrough</code> — 回答の有効期限",
+    "<code>verificationStatus</code> — verified / outdated / under-review"
+  ],
+  "distribution_title": "配信",
+  "distribution_items": [
+    "<code>specVersion</code> — 仕様バージョン宣言",
+    "<code>updateFeedUrl</code> — プルベースの変更フィード",
+    "<code>pingbackEndpoints</code> — プッシュ通知",
+    "AQA Hub Protocol — 集中型更新集約"
+  ],
+  "resources_title": "リソース",
+  "resources": [
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/SPECIFICATION.md", "label": "完全仕様書", "desc": "AQA技術仕様書の完全版"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/migration-guide.md", "label": "移行ガイド", "desc": "素のHTML FAQからAQAへの8ステップガイド"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/crawler-recommendations.md", "label": "クローラー推奨事項", "desc": "AIクローラー開発者向けガイダンス"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/ecosystem-integration.md", "label": "エコシステム統合", "desc": "LangChain、LlamaIndex、WordPressプラグイン"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/faq-vs-aqa-comparison.md", "label": "FAQ vs AQA 比較", "desc": "シグナルの並列比較"},
+    {"url": "https://github.com/sarsator/aqa-specification/tree/master/validators", "label": "Pythonバリデーター", "desc": "ファイルまたはURLからAQAブロックを検証（0〜100スコアリング）"},
+    {"url": "https://github.com/sarsator/aqa-specification/tree/master/examples", "label": "サンプル", "desc": "Basic、Standard、Fullにわたる7つの実装例"},
+    {"url": "https://aqa-spec.org/ns/context.jsonld", "label": "JSON-LDコンテキスト", "desc": "AQA名前空間の定義"},
+    {"url": "https://aqa-spec.org/schemas/aqa-schema.json", "label": "JSONスキーマ", "desc": "機械可読の検証スキーマ"}
+  ],
+  "faq_title": "よくある質問",
+  "faq_intro": "このFAQはAQA Full + Shieldを実装しています。<a href=\"view-source:https://aqa-spec.org/\">ページのソースコードを表示</a>してJSON-LDブロックをご確認ください。",
+  "faq": [
+    {
+      "q": "AQAとは何ですか？",
+      "a": "AQA（AI Question Answer）は、AIシステムが回答の品質、鮮度、出所を評価するために必要なメタデータをSchema.org FAQPage構造化データに追加するオープン仕様です。カスタムJSON-LDコンテキストを使用して、質問ごとの日付、引用、変更履歴、AI利用ポリシーなどの拡張プロパティを既存のSchema.orgタイプに追加します。AQAはMITライセンスで、永久無料、ベンダーロックインもありません。"
+    },
+    {
+      "q": "AQAはSchema.orgと互換性がありますか？",
+      "a": "はい。AQAは既存のSchema.orgタイプ（Article、FAQPage、Question、Answer）のみを使用し、JSON-LDコンテキストを通じて拡張プロパティを追加します。AQA名前空間を理解しないバリデーターは、追加プロパティをサイレントに無視します。既存のSchema.orgマークアップは変更なしに動作し続けます。AQAは厳密な上位互換集合であり、有効なAQAブロックはすべて有効なSchema.orgドキュメントでもあります。"
+    },
+    {
+      "q": "AQAの適合性レベルはどのようなものですか？",
+      "a": "AQAは3つの適合性レベルを定義しています。Basicは質問ごとの日付、回答ごとに少なくとも1つの引用、ドキュメントレベルの著者と言語を必要とします。Standardは更新頻度、変更履歴、質問バージョン管理、セクター分類、構造化引用を追加します。Fullはモニタリングソース、資格情報を含む質問レベルの著者情報、完全な変更プロベナンスを必要とします。すべてのレベルは累積的であり、StandardはBasicのすべてを含み、FullはStandardのすべてを含みます。"
+    },
+    {
+      "q": "AQA Shieldとは何ですか？",
+      "a": "AQA Shieldは、任意の適合性レベルで利用可能な直交的な保護メカニズムです。すべての質問にaiUsagePolicy（RAG引用、学習、要約、引用、商用利用などの許可されるAI利用を宣言する）とcontentSignature（回答の完全性を証明するSHA-256ハッシュ）の両方が含まれている場合、そのドキュメントはAQA Shieldの認定を受けます。Shieldは法的宣言と暗号学的検証を組み合わせます。"
+    },
+    {
+      "q": "自分のウェブサイトにAQAを実装するにはどうすればよいですか？",
+      "a": "FAQページにJSON-LDスクリプトブロックを追加し、Schema.orgとhttps://aqa-spec.org/ns/context.jsonldのAQAコンテキストの両方を参照するデュアルコンテキストを使用します。FAQPage を含むArticleにFAQをラップし、質問ごとにdateCreated、dateModified、citationプロパティを追加してから、Pythonバリデーターで検証します。GitHub上の移行ガイドは、素のHTML FAQから完全なAQA実装までの8つの詳細なステップを提供しています。"
+    }
+  ],
+  "philosophy_title": "設計思想",
+  "philosophy_text_1": "AQAはオープンで、永久無料、ベンダーロックインもありません。誰でも実装、検証、拡張することができます。仕様はMITライセンスで、コミュニティ主導です。",
+  "philosophy_text_2": "目標は、OpenGraphがソーシャルシェアリングに対して行ったことをAIの可視性に対して行うことです。つまり、出版者が既存の動作を壊すことなく、コンテンツを機械可読にするためのシンプルで標準的な方法を提供することです。",
+  "footer_spec": "AQA仕様 v1.2.2-ドラフト",
+  "footer_created": "Davy Abderrahman 作成"
+}

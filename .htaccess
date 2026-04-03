@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteBase /
+
+# Language routes: /fr/, /de/, etc. -> index.php
+RewriteRule ^(fr|de|es|it|pt|nl|pl|ro|sv|cs|zh|ja)/?$ index.php [L,QSA]
+
+# Root -> index.php (only if no real file matches)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^$ index.php [L]

@@ -1,0 +1,123 @@
+{
+  "lang": "sv",
+  "title": "AQA — AI Question Answer | Öppen specifikation för AI-optimerad Q&A",
+  "meta_description": "AQA är en öppen specifikation för att berika FAQ-strukturerad data med metadata som AI-system behöver. Schema.org-kompatibel, MIT-licensierad, gratis för alltid.",
+  "og_title": "AQA — AI Question Answer",
+  "og_description": "Öppen specifikation för strukturerat Q&A-innehåll optimerat för AI-förståelse och citering.",
+  "h1": "AQA — AI Question Answer",
+  "subtitle": "Öppen specifikation för strukturerat Q&A-innehåll optimerat för AI-förståelse och citering.",
+  "schema_compatible": "Schema.org-kompatibel",
+  "problem_title": "Problemet",
+  "problem_text": "FAQ-sidor finns överallt, men Schema.org FAQPage ger AI-system nästan ingenting för att bedöma svarskvalitet. Det finns inga per-fråge-datum, ingen ändringslogg, inga källhänvisningar per svar och ingen deklarerad underhållsfrekvens. En AI-crawler kan inte avgöra om ett svar skrevs igår eller för tre år sedan, eller om någon fortfarande underhåller det.",
+  "solution_title": "Lösningen",
+  "solution_text": "AQA är en dokumenterad konvention som berikar befintliga Schema.org-typer (Article, FAQPage, Question, Answer) med en liten uppsättning tilläggsegenskaper via ett anpassat JSON-LD-kontext. Inga nya typer uppfinns och inga bryande ändringar införs. Validerare som inte förstår AQA-namnrymden ignorerar de extra egenskaperna tyst. Full bakåtkompatibilitet bevaras.",
+  "signals_title": "Vad AQA Tillför",
+  "signals_col_signal": "Signal",
+  "signals_col_description": "Vad den berättar för AI-crawlers",
+  "signals": [
+    {"signal": "<code>dateCreated</code> / <code>dateModified</code>", "desc": "Exakt aktualitet för varje enskilt svar"},
+    {"signal": "<code>citation</code>", "desc": "Auktoritativ källa som stödjer varje påstående"},
+    {"signal": "<code>changelog</code>", "desc": "Varför och när varje svar ändrades"},
+    {"signal": "<code>questionVersion</code>", "desc": "Spåra innehållsändringar i svar"},
+    {"signal": "<code>updateFrequency</code>", "desc": "Utgivarens åtagande för innehållsgranskning"},
+    {"signal": "<code>monitoringSources</code>", "desc": "Vilka flöden och publikationer utgivaren bevakar"},
+    {"signal": "<code>conformanceLevel</code>", "desc": "Självdeklarerad implementeringsdjup"},
+    {"signal": "<code>aiUsagePolicy</code>", "desc": "Detaljerade AI-rättigheter: RAG, träning, citering, kommersiell användning"},
+    {"signal": "<code>contentSignature</code>", "desc": "SHA-256-hash som bevisar svarets integritet"},
+    {"signal": "<code>ragSummary</code>", "desc": "Token-optimerad 300-teckens sammanfattning för vektorinbäddning"},
+    {"signal": "<code>audienceAnswers</code>", "desc": "Målgruppsspecifika svarsvarianter"},
+    {"signal": "<code>dynamicEndpoint</code>", "desc": "Realtids-API för volatila data"},
+    {"signal": "<code>unansweredQueryEndpoint</code>", "desc": "Webhook: AI skickar tillbaka saknade frågor"},
+    {"signal": "<code>validThrough</code>", "desc": "Per-svar utgångsdatum"},
+    {"signal": "<code>verificationStatus</code>", "desc": "Verified / outdated / under-review-status"},
+    {"signal": "<code>specVersion</code>", "desc": "AQA-specifikationsversiondeklaration"},
+    {"signal": "<code>updateFeedUrl</code>", "desc": "Pekare till ändringsdetekteringsflöde"},
+    {"signal": "<code>pingbackEndpoints</code>", "desc": "Push-notifieringar vid innehållsuppdateringar"}
+  ],
+  "conformance_title": "Konformitetsnivåer",
+  "basic_title": "Basic",
+  "basic_effort": "Minimal ansträngning",
+  "basic_desc": "Varje svar har en känd ålder och minst en källhänvisning. Dokumentet deklarerar sitt språk och sin författare.",
+  "standard_title": "Standard",
+  "standard_effort": "Måttlig ansträngning",
+  "standard_desc": "Innehållet underhålls aktivt, ändringar spåras med en ändringslogg, och branschkontext är explicit via sektorsklassificering och övervakningskällor.",
+  "full_title": "Full",
+  "full_effort": "Betydande ansträngning",
+  "full_desc": "Fullständig provenanskedja: vem skrev varje svar, vad ändrades, när, varför och varifrån. Per-fråge-författarskap och versionerade ändringsloggar.",
+  "shield_title": "AQA Shield",
+  "shield_text": "När varje fråga i ett dokument inkluderar både <code>aiUsagePolicy</code> och <code>contentSignature</code> kvalificerar sig dokumentet för AQA Shield. Policyn deklarerar tillåtna AI-användningar (RAG-citering, träning, sammanfattning, citering, kommersiell användning). Signaturen tillhandahåller SHA-256-hashverifiering mot innehållsförändring. Shield fungerar på vilken konformitetsnivå som helst som en ortogonal garanti som kombinerar rättsligt skydd och kryptografisk integritet.",
+  "quickstart_title": "Snabbstart",
+  "quickstart_intro": "En minimal AQA Basic-implementation:",
+  "quickstart_validate": "Validera din implementation:",
+  "quickstart_migration": "Migreringsguide",
+  "quickstart_migration_desc": "steg-för-steg-instruktioner för att lägga till AQA på befintliga FAQ-sidor.",
+  "copy_btn": "Kopiera",
+  "copy_btn_done": "Kopierat",
+  "features_title": "V1.2-funktioner",
+  "protection_title": "Skydd",
+  "protection_items": [
+    "<code>aiUsagePolicy</code> — detaljerad AI-rättighetsdeklaration",
+    "<code>contentSignature</code> — SHA-256-integritetshash"
+  ],
+  "enrichment_title": "Berikning",
+  "enrichment_items": [
+    "<code>ragSummary</code> — vektoroptimerad sammanfattning",
+    "<code>audienceAnswers</code> — flerpersonavarianter",
+    "<code>potentialAction</code> — agentiska åtgärder",
+    "<code>dynamicEndpoint</code> — realtids-API"
+  ],
+  "feedback_title": "Återkoppling",
+  "feedback_items": [
+    "<code>unansweredQueryEndpoint</code> — webhook för saknade svar",
+    "<code>validThrough</code> — svarets utgångsdatum",
+    "<code>verificationStatus</code> — verified / outdated / under-review"
+  ],
+  "distribution_title": "Distribution",
+  "distribution_items": [
+    "<code>specVersion</code> — specifikationsversiondeklaration",
+    "<code>updateFeedUrl</code> — pull-baserat ändringsflöde",
+    "<code>pingbackEndpoints</code> — push-notifieringar",
+    "AQA Hub Protocol — centraliserad uppdateringsaggregering"
+  ],
+  "resources_title": "Resurser",
+  "resources": [
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/SPECIFICATION.md", "label": "Fullständig specifikation", "desc": "den fullständiga AQA tekniska specifikationen"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/migration-guide.md", "label": "Migreringsguide", "desc": "8-stegsguide från bara HTML FAQ till AQA"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/crawler-recommendations.md", "label": "Crawler-rekommendationer", "desc": "vägledning för AI-crawlerutvecklare"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/ecosystem-integration.md", "label": "Ekosystemintegration", "desc": "LangChain, LlamaIndex, WordPress-plugin"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/faq-vs-aqa-comparison.md", "label": "FAQ vs AQA-jämförelse", "desc": "sida-vid-sida-signaljämförelse"},
+    {"url": "https://github.com/sarsator/aqa-specification/tree/master/validators", "label": "Python-validerare", "desc": "validera AQA-block från fil eller URL (0–100 poängsättning)"},
+    {"url": "https://github.com/sarsator/aqa-specification/tree/master/examples", "label": "Exempel", "desc": "7 implementationer för Basic, Standard och Full"},
+    {"url": "https://aqa-spec.org/ns/context.jsonld", "label": "JSON-LD-kontext", "desc": "AQA-namnrymdens definition"},
+    {"url": "https://aqa-spec.org/schemas/aqa-schema.json", "label": "JSON Schema", "desc": "maskinläsbart valideringsschema"}
+  ],
+  "faq_title": "Vanliga frågor",
+  "faq_intro": "Denna FAQ implementerar AQA Full + Shield. <a href=\"view-source:https://aqa-spec.org/\">Visa sidans källkod</a> för att se JSON-LD-blocket.",
+  "faq": [
+    {
+      "q": "Vad är AQA?",
+      "a": "AQA (AI Question Answer) är en öppen specifikation som berikar Schema.org FAQPage-strukturerad data med metadata som AI-system behöver för att bedöma svarskvalitet, aktualitet och ursprung. Den använder ett anpassat JSON-LD-kontext för att lägga till tilläggsegenskaper som per-fråge-datum, citeringar, ändringsloggar och AI-användningspolicyer till befintliga Schema.org-typer. AQA är MIT-licensierad, gratis för alltid och har inget inlåsning till leverantör."
+    },
+    {
+      "q": "Är AQA kompatibel med Schema.org?",
+      "a": "Ja. AQA använder enbart befintliga Schema.org-typer (Article, FAQPage, Question, Answer) och lägger till tilläggsegenskaper via ett JSON-LD-kontext. Validerare som inte förstår AQA-namnrymden ignorerar de extra egenskaperna tyst. Befintlig Schema.org-uppmärkning fortsätter att fungera oförändrad. AQA är en strikt supermängd — varje giltigt AQA-block är också ett giltigt Schema.org-dokument."
+    },
+    {
+      "q": "Vilka konformitetsnivåer finns i AQA?",
+      "a": "AQA definierar tre konformitetsnivåer. Basic kräver per-fråge-datum, minst en citering per svar samt dokumentnivå-författare och -språk. Standard lägger till uppdateringsfrekvens, ändringslogg, frågeversionering, sektorsklassificering och strukturerade citeringar. Full kräver övervakningskällor, per-fråge-författarskap med meriter och fullständig ändringsprovens. Alla nivåer är kumulativa — Standard inkluderar allt i Basic och Full inkluderar allt i Standard."
+    },
+    {
+      "q": "Vad är AQA Shield?",
+      "a": "AQA Shield är en ortogonal skyddsmekanism tillgänglig på vilken konformitetsnivå som helst. Ett dokument kvalificerar sig för AQA Shield när varje fråga inkluderar både en aiUsagePolicy (som deklarerar tillåtna AI-användningar såsom RAG-citering, träning, sammanfattning, citering och kommersiell användning) och en contentSignature (SHA-256-hash som bevisar svarets integritet). Shield kombinerar rättslig deklaration med kryptografisk verifiering."
+    },
+    {
+      "q": "Hur implementerar jag AQA på min webbplats?",
+      "a": "Lägg till ett JSON-LD-skriptblock på din FAQ-sida med ett dubbelt kontext som refererar till både Schema.org och AQA-kontextet på https://aqa-spec.org/ns/context.jsonld. Omslut din FAQ i en Article som innehåller en FAQPage, lägg till per-fråge-egenskaperna dateCreated, dateModified och citation, och validera sedan med Python-valideraren. Migreringsguiden på GitHub ger 8 detaljerade steg från bara HTML FAQ till full AQA-implementation."
+    }
+  ],
+  "philosophy_title": "Filosofi",
+  "philosophy_text_1": "AQA är öppen, gratis för alltid och har inget inlåsning till leverantör. Vem som helst kan implementera det, validera det och utöka det. Specifikationen är MIT-licensierad och gemenskapsstyrd.",
+  "philosophy_text_2": "Målet är att göra för AI-synlighet vad OpenGraph gjorde för social delning: ge utgivare ett enkelt, standardiserat sätt att göra sitt innehåll maskinförståeligt utan att förstöra något som redan fungerar.",
+  "footer_spec": "AQA-specifikation v1.2.2-utkast",
+  "footer_created": "Skapad av Davy Abderrahman"
+}

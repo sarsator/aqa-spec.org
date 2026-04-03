@@ -1,0 +1,123 @@
+{
+  "lang": "nl",
+  "title": "AQA — AI Question Answer | Open Specificatie voor AI-geoptimaliseerde Q&A",
+  "meta_description": "AQA is een open specificatie voor het verrijken van FAQ-gestructureerde gegevens met metadata die AI-systemen nodig hebben. Schema.org-compatibel, MIT-licentie, voor altijd gratis.",
+  "og_title": "AQA — AI Question Answer",
+  "og_description": "Open specificatie voor gestructureerde Q&A-inhoud geoptimaliseerd voor AI-begrip en -citatie.",
+  "h1": "AQA — AI Question Answer",
+  "subtitle": "Open specificatie voor gestructureerde Q&A-inhoud geoptimaliseerd voor AI-begrip en -citatie.",
+  "schema_compatible": "Schema.org-compatibel",
+  "problem_title": "Het Probleem",
+  "problem_text": "FAQ-pagina's zijn overal, maar Schema.org FAQPage geeft AI-systemen vrijwel niets om de antwoordkwaliteit te beoordelen. Er zijn geen datums per vraag, geen wijzigingslog, geen broncitaties per antwoord en geen opgegeven onderhoudsfrequentie. Een AI-crawler kan niet bepalen of een antwoord gisteren of drie jaar geleden is geschreven, of dat iemand het nog bijhoudt.",
+  "solution_title": "De Oplossing",
+  "solution_text": "AQA is een gedocumenteerde conventie die bestaande Schema.org-typen (Article, FAQPage, Question, Answer) verrijkt met een kleine set uitbreidingseigenschappen via een aangepaste JSON-LD-context. Er worden geen nieuwe typen gemaakt en er worden geen incompatibele wijzigingen doorgevoerd. Validators die de AQA-naamruimte niet kennen, negeren de extra eigenschappen stilzwijgend. Volledige achterwaartse compatibiliteit blijft behouden.",
+  "signals_title": "Wat AQA Toevoegt",
+  "signals_col_signal": "Signaal",
+  "signals_col_description": "Wat het AI-crawlers vertelt",
+  "signals": [
+    {"signal": "<code>dateCreated</code> / <code>dateModified</code>", "desc": "Exacte versheid van elk afzonderlijk antwoord"},
+    {"signal": "<code>citation</code>", "desc": "Gezaghebbende bron ter onderbouwing van elke bewering"},
+    {"signal": "<code>changelog</code>", "desc": "Waarom en wanneer elk antwoord is aangepast"},
+    {"signal": "<code>questionVersion</code>", "desc": "Bijhouden van inhoudelijke wijzigingen in antwoorden"},
+    {"signal": "<code>updateFrequency</code>", "desc": "De toewijding van de uitgever aan inhoudsrevisie"},
+    {"signal": "<code>monitoringSources</code>", "desc": "Feeds en publicaties die de uitgever volgt"},
+    {"signal": "<code>conformanceLevel</code>", "desc": "Zelfverklaarde implementatiediepte"},
+    {"signal": "<code>aiUsagePolicy</code>", "desc": "Gedetailleerde AI-rechten: RAG, training, citatie, commercieel gebruik"},
+    {"signal": "<code>contentSignature</code>", "desc": "SHA-256-hash als bewijs van de integriteit van het antwoord"},
+    {"signal": "<code>ragSummary</code>", "desc": "Token-geoptimaliseerde samenvatting van 300 tekens voor vectorinbedding"},
+    {"signal": "<code>audienceAnswers</code>", "desc": "Doelgroepspecifieke antwoordvarianten"},
+    {"signal": "<code>dynamicEndpoint</code>", "desc": "Realtime API voor vluchtige gegevens"},
+    {"signal": "<code>unansweredQueryEndpoint</code>", "desc": "Webhook: AI stuurt ontbrekende vragen terug"},
+    {"signal": "<code>validThrough</code>", "desc": "Vervaldatum per antwoord"},
+    {"signal": "<code>verificationStatus</code>", "desc": "Status: geverifieerd / verouderd / in revisie"},
+    {"signal": "<code>specVersion</code>", "desc": "Versiedeclaratie van de AQA-specificatie"},
+    {"signal": "<code>updateFeedUrl</code>", "desc": "Aanwijzer naar feed voor wijzigingsdetectie"},
+    {"signal": "<code>pingbackEndpoints</code>", "desc": "Push-meldingen bij inhoudsupdates"}
+  ],
+  "conformance_title": "Conformantieniveaus",
+  "basic_title": "Basis",
+  "basic_effort": "Minimale inspanning",
+  "basic_desc": "Elk antwoord heeft een bekende datum en ten minste één broncitatie. Het document declareert zijn taal en auteur.",
+  "standard_title": "Standaard",
+  "standard_effort": "Gemiddelde inspanning",
+  "standard_desc": "Inhoud wordt actief onderhouden, wijzigingen worden bijgehouden met een changelog, en de branchcontext is expliciet via sectorclassificatie en monitoringbronnen.",
+  "full_title": "Volledig",
+  "full_effort": "Aanzienlijke inspanning",
+  "full_desc": "Volledige herkomstrekening: wie elk antwoord heeft geschreven, wat er is veranderd, wanneer, waarom en van waar. Auteurschap per vraag en versioned changelogs.",
+  "shield_title": "AQA Shield",
+  "shield_text": "Wanneer elke vraag in een document zowel <code>aiUsagePolicy</code> als <code>contentSignature</code> bevat, kwalificeert het document voor AQA Shield. Het beleid declareert toegestane AI-toepassingen (RAG-citatie, training, samenvatting, citatie, commercieel gebruik). De handtekening biedt SHA-256-hashverificatie tegen inhoudsmutaties. Shield werkt op elk conformantieniveau als een orthogonale garantie die juridische bescherming en cryptografische integriteit combineert.",
+  "quickstart_title": "Snel Starten",
+  "quickstart_intro": "Een minimale AQA Basic-implementatie:",
+  "quickstart_validate": "Valideer uw implementatie:",
+  "quickstart_migration": "Migratiegids",
+  "quickstart_migration_desc": "stapsgewijze instructies om AQA aan bestaande FAQ-pagina's toe te voegen.",
+  "copy_btn": "Kopiëren",
+  "copy_btn_done": "Gekopieerd",
+  "features_title": "V1.2 Functies",
+  "protection_title": "Bescherming",
+  "protection_items": [
+    "<code>aiUsagePolicy</code> — gedetailleerde AI-rechtendeclaratie",
+    "<code>contentSignature</code> — SHA-256-integriteitshash"
+  ],
+  "enrichment_title": "Verrijking",
+  "enrichment_items": [
+    "<code>ragSummary</code> — vectorgeoptimaliseerde samenvatting",
+    "<code>audienceAnswers</code> — multi-persona varianten",
+    "<code>potentialAction</code> — agentische acties",
+    "<code>dynamicEndpoint</code> — realtime API"
+  ],
+  "feedback_title": "Feedback",
+  "feedback_items": [
+    "<code>unansweredQueryEndpoint</code> — webhook voor ontbrekend antwoord",
+    "<code>validThrough</code> — vervaldatum antwoord",
+    "<code>verificationStatus</code> — geverifieerd / verouderd / in revisie"
+  ],
+  "distribution_title": "Distributie",
+  "distribution_items": [
+    "<code>specVersion</code> — versiedeclaratie specificatie",
+    "<code>updateFeedUrl</code> — pull-gebaseerde wijzigingsfeed",
+    "<code>pingbackEndpoints</code> — push-meldingen",
+    "AQA Hub Protocol — gecentraliseerde updateaggregatie"
+  ],
+  "resources_title": "Bronnen",
+  "resources": [
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/SPECIFICATION.md", "label": "Volledige Specificatie", "desc": "de volledige technische AQA-specificatie"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/migration-guide.md", "label": "Migratiegids", "desc": "8-stappengids van kale HTML FAQ tot AQA"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/crawler-recommendations.md", "label": "Crawleraanbevelingen", "desc": "richtlijnen voor ontwikkelaars van AI-crawlers"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/ecosystem-integration.md", "label": "Ecosysteemintegratie", "desc": "LangChain, LlamaIndex, WordPress-plugin"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/faq-vs-aqa-comparison.md", "label": "FAQ vs AQA Vergelijking", "desc": "zij-aan-zij signalencomparatie"},
+    {"url": "https://github.com/sarsator/aqa-specification/tree/master/validators", "label": "Python Validator", "desc": "valideer AQA-blokken vanuit bestand of URL (score 0-100)"},
+    {"url": "https://github.com/sarsator/aqa-specification/tree/master/examples", "label": "Voorbeelden", "desc": "7 implementaties verspreid over Basic, Standard en Full"},
+    {"url": "https://aqa-spec.org/ns/context.jsonld", "label": "JSON-LD Context", "desc": "de definitie van de AQA-naamruimte"},
+    {"url": "https://aqa-spec.org/schemas/aqa-schema.json", "label": "JSON Schema", "desc": "machineleesbaar validatieschema"}
+  ],
+  "faq_title": "Veelgestelde Vragen",
+  "faq_intro": "Deze FAQ implementeert AQA Full + Shield. <a href=\"view-source:https://aqa-spec.org/\">Bekijk de paginabron</a> om het JSON-LD-blok te zien.",
+  "faq": [
+    {
+      "q": "Wat is AQA?",
+      "a": "AQA (AI Question Answer) is een open specificatie die gestructureerde Schema.org FAQPage-gegevens verrijkt met metadata die AI-systemen nodig hebben om de kwaliteit, versheid en herkomst van antwoorden te beoordelen. Het gebruikt een aangepaste JSON-LD-context om uitbreidingseigenschappen toe te voegen zoals datums per vraag, citaties, changelogs en AI-gebruiksbeleid aan bestaande Schema.org-typen. AQA is MIT-gelicentieerd, voor altijd gratis en heeft geen leveranciersafhankelijkheid."
+    },
+    {
+      "q": "Is AQA compatibel met Schema.org?",
+      "a": "Ja. AQA gebruikt uitsluitend bestaande Schema.org-typen (Article, FAQPage, Question, Answer) en voegt uitbreidingseigenschappen toe via een JSON-LD-context. Validators die de AQA-naamruimte niet kennen, negeren de extra eigenschappen stilzwijgend. Bestaande Schema.org-opmaak blijft ongewijzigd werken. AQA is een strikte superset — elk geldig AQA-blok is ook een geldig Schema.org-document."
+    },
+    {
+      "q": "Wat zijn de AQA-conformantieniveaus?",
+      "a": "AQA definieert drie conformantieniveaus. Basic vereist datums per vraag, ten minste één citatie per antwoord en auteur en taal op documentniveau. Standard voegt updatefrequentie, changelog, vraagversioning, sectorclassificatie en gestructureerde citaties toe. Full vereist monitoringbronnen, auteurschap per vraag met referenties en volledige wijzigingsherkomst. Alle niveaus zijn cumulatief — Standard omvat alles van Basic, en Full omvat alles van Standard."
+    },
+    {
+      "q": "Wat is AQA Shield?",
+      "a": "AQA Shield is een orthogonaal beschermingsmechanisme dat beschikbaar is op elk conformantieniveau. Een document kwalificeert voor AQA Shield wanneer elke vraag zowel een aiUsagePolicy (die toegestane AI-toepassingen declareert zoals RAG-citatie, training, samenvatting, citatie en commercieel gebruik) als een contentSignature (SHA-256-hash als bewijs van de antwoordintegriteit) bevat. Shield combineert juridische declaratie met cryptografische verificatie."
+    },
+    {
+      "q": "Hoe implementeer ik AQA op mijn website?",
+      "a": "Voeg een JSON-LD-scriptblok toe aan uw FAQ-pagina met een dubbele context die verwijst naar zowel Schema.org als de AQA-context op https://aqa-spec.org/ns/context.jsonld. Wikkel uw FAQ in een Article dat een FAQPage bevat, voeg dateCreated-, dateModified- en citation-eigenschappen per vraag toe, en valideer vervolgens met de Python-validator. De migratiegids op GitHub biedt 8 gedetailleerde stappen van een kale HTML FAQ tot een volledige AQA-implementatie."
+    }
+  ],
+  "philosophy_title": "Filosofie",
+  "philosophy_text_1": "AQA is open, voor altijd gratis en heeft geen leveranciersafhankelijkheid. Iedereen kan het implementeren, valideren en uitbreiden. De specificatie is MIT-gelicentieerd en door de gemeenschap aangedreven.",
+  "philosophy_text_2": "Het doel is voor AI-zichtbaarheid te doen wat OpenGraph voor sociaal delen deed: uitgevers een eenvoudige, standaard manier geven om hun inhoud machinebegrijpelijk te maken zonder iets te breken dat al werkt.",
+  "footer_spec": "AQA Specification v1.2.2-draft",
+  "footer_created": "Gemaakt door Davy Abderrahman"
+}

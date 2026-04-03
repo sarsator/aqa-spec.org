@@ -1,0 +1,123 @@
+{
+  "lang": "zh",
+  "title": "AQA — AI Question Answer | 面向AI优化的问答开放规范",
+  "meta_description": "AQA 是一种开放规范，用于为 FAQ 结构化数据添加 AI 系统所需的元数据。兼容 Schema.org，MIT 许可证，永久免费。",
+  "og_title": "AQA — AI Question Answer",
+  "og_description": "面向 AI 理解和引用而优化的结构化问答内容开放规范。",
+  "h1": "AQA — AI Question Answer",
+  "subtitle": "面向 AI 理解和引用而优化的结构化问答内容开放规范。",
+  "schema_compatible": "兼容 Schema.org",
+  "problem_title": "问题所在",
+  "problem_text": "FAQ 页面随处可见，但 Schema.org FAQPage 几乎没有为 AI 系统提供任何评估答案质量的依据。没有针对每个问题的日期、没有变更日志、没有每条答案的来源引用，也没有声明的维护频率。AI 爬虫无法判断一条答案是昨天写的还是三年前写的，也不知道是否还有人在维护它。",
+  "solution_title": "解决方案",
+  "solution_text": "AQA 是一套文档化约定，通过自定义 JSON-LD 上下文，为现有 Schema.org 类型（Article、FAQPage、Question、Answer）添加一小组扩展属性。无需发明新类型，不引入任何破坏性变更。不理解 AQA 命名空间的验证器会静默忽略额外属性。完全向后兼容。",
+  "signals_title": "AQA 新增内容",
+  "signals_col_signal": "信号",
+  "signals_col_description": "向 AI 爬虫传达的信息",
+  "signals": [
+    {"signal": "<code>dateCreated</code> / <code>dateModified</code>", "desc": "每条答案的精确时效性"},
+    {"signal": "<code>citation</code>", "desc": "支撑每项声明的权威来源"},
+    {"signal": "<code>changelog</code>", "desc": "每条答案的修改原因和时间"},
+    {"signal": "<code>questionVersion</code>", "desc": "跟踪答案内容变更"},
+    {"signal": "<code>updateFrequency</code>", "desc": "发布者的内容审核承诺"},
+    {"signal": "<code>monitoringSources</code>", "desc": "发布者关注的信息源和出版物"},
+    {"signal": "<code>conformanceLevel</code>", "desc": "自声明的实现深度"},
+    {"signal": "<code>aiUsagePolicy</code>", "desc": "细粒度 AI 权限：RAG、训练、引用、商业使用"},
+    {"signal": "<code>contentSignature</code>", "desc": "证明答案完整性的 SHA-256 哈希值"},
+    {"signal": "<code>ragSummary</code>", "desc": "用于向量嵌入的 300 字符标记优化摘要"},
+    {"signal": "<code>audienceAnswers</code>", "desc": "针对特定受众的答案变体"},
+    {"signal": "<code>dynamicEndpoint</code>", "desc": "用于动态数据的实时 API"},
+    {"signal": "<code>unansweredQueryEndpoint</code>", "desc": "Webhook：AI 将缺失的问题发送回来"},
+    {"signal": "<code>validThrough</code>", "desc": "每条答案的过期日期"},
+    {"signal": "<code>verificationStatus</code>", "desc": "已验证 / 已过期 / 审核中状态"},
+    {"signal": "<code>specVersion</code>", "desc": "AQA 规范版本声明"},
+    {"signal": "<code>updateFeedUrl</code>", "desc": "变更检测源地址"},
+    {"signal": "<code>pingbackEndpoints</code>", "desc": "内容更新时的推送通知"}
+  ],
+  "conformance_title": "符合性级别",
+  "basic_title": "基础级",
+  "basic_effort": "最小投入",
+  "basic_desc": "每条答案具有已知创建时间和至少一个来源引用。文档声明其语言和作者。",
+  "standard_title": "标准级",
+  "standard_effort": "中等投入",
+  "standard_desc": "内容得到积极维护，通过变更日志追踪变更，并通过行业分类和监控来源明确行业背景。",
+  "full_title": "完整级",
+  "full_effort": "较大投入",
+  "full_desc": "完整的溯源链：每条答案由谁撰写、修改了什么、何时、为何以及从哪里修改。问题级作者信息和版本化变更日志。",
+  "shield_title": "AQA Shield",
+  "shield_text": "当文档中每个问题都同时包含 <code>aiUsagePolicy</code> 和 <code>contentSignature</code> 时，该文档即可获得 AQA Shield 认证。策略声明允许的 AI 使用方式（RAG 引用、训练、摘要、引用、商业使用）。签名提供 SHA-256 哈希验证，防止内容篡改。Shield 可在任意符合性级别上使用，作为结合法律保护和密码学完整性的正交保障。",
+  "quickstart_title": "快速开始",
+  "quickstart_intro": "最小化 AQA Basic 实现：",
+  "quickstart_validate": "验证您的实现：",
+  "quickstart_migration": "迁移指南",
+  "quickstart_migration_desc": "将 AQA 添加到现有 FAQ 页面的分步说明。",
+  "copy_btn": "复制",
+  "copy_btn_done": "已复制",
+  "features_title": "V1.2 功能",
+  "protection_title": "保护",
+  "protection_items": [
+    "<code>aiUsagePolicy</code> — 细粒度 AI 权限声明",
+    "<code>contentSignature</code> — SHA-256 完整性哈希"
+  ],
+  "enrichment_title": "内容增强",
+  "enrichment_items": [
+    "<code>ragSummary</code> — 向量优化摘要",
+    "<code>audienceAnswers</code> — 多角色变体",
+    "<code>potentialAction</code> — 智能体动作",
+    "<code>dynamicEndpoint</code> — 实时 API"
+  ],
+  "feedback_title": "反馈",
+  "feedback_items": [
+    "<code>unansweredQueryEndpoint</code> — 缺失答案 Webhook",
+    "<code>validThrough</code> — 答案过期时间",
+    "<code>verificationStatus</code> — 已验证 / 已过期 / 审核中"
+  ],
+  "distribution_title": "分发",
+  "distribution_items": [
+    "<code>specVersion</code> — 规范版本声明",
+    "<code>updateFeedUrl</code> — 基于拉取的变更源",
+    "<code>pingbackEndpoints</code> — 推送通知",
+    "AQA Hub Protocol — 集中式更新聚合"
+  ],
+  "resources_title": "资源",
+  "resources": [
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/SPECIFICATION.md", "label": "完整规范", "desc": "完整的 AQA 技术规范"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/migration-guide.md", "label": "迁移指南", "desc": "从纯 HTML FAQ 到 AQA 的 8 步指南"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/crawler-recommendations.md", "label": "爬虫建议", "desc": "面向 AI 爬虫开发者的指导"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/ecosystem-integration.md", "label": "生态系统集成", "desc": "LangChain、LlamaIndex、WordPress 插件"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/faq-vs-aqa-comparison.md", "label": "FAQ 与 AQA 对比", "desc": "信号并排比较"},
+    {"url": "https://github.com/sarsator/aqa-specification/tree/master/validators", "label": "Python 验证器", "desc": "从文件或 URL 验证 AQA 块（0–100 评分）"},
+    {"url": "https://github.com/sarsator/aqa-specification/tree/master/examples", "label": "示例", "desc": "涵盖基础级、标准级和完整级的 7 个实现"},
+    {"url": "https://aqa-spec.org/ns/context.jsonld", "label": "JSON-LD 上下文", "desc": "AQA 命名空间定义"},
+    {"url": "https://aqa-spec.org/schemas/aqa-schema.json", "label": "JSON Schema", "desc": "机器可读的验证模式"}
+  ],
+  "faq_title": "常见问题",
+  "faq_intro": "本 FAQ 实现了 AQA Full + Shield。<a href=\"view-source:https://aqa-spec.org/\">查看页面源代码</a>以查看 JSON-LD 块。",
+  "faq": [
+    {
+      "q": "什么是 AQA？",
+      "a": "AQA（AI Question Answer）是一种开放规范，为 Schema.org FAQPage 结构化数据添加 AI 系统评估答案质量、时效性和溯源所需的元数据。它使用自定义 JSON-LD 上下文，将问题级日期、引用、变更日志和 AI 使用策略等扩展属性添加到现有 Schema.org 类型中。AQA 采用 MIT 许可证，永久免费，无供应商锁定。"
+    },
+    {
+      "q": "AQA 是否与 Schema.org 兼容？",
+      "a": "是的。AQA 仅使用现有的 Schema.org 类型（Article、FAQPage、Question、Answer），并通过 JSON-LD 上下文添加扩展属性。不理解 AQA 命名空间的验证器会静默忽略额外属性。现有的 Schema.org 标记继续正常工作，不受任何影响。AQA 是一个严格的超集——每个有效的 AQA 块同时也是有效的 Schema.org 文档。"
+    },
+    {
+      "q": "AQA 的符合性级别有哪些？",
+      "a": "AQA 定义了三个符合性级别。基础级要求每个问题有日期、每条答案至少有一个引用，以及文档级的作者和语言信息。标准级增加了更新频率、变更日志、问题版本控制、行业分类和结构化引用。完整级要求监控来源、带凭证的问题级作者信息以及完整的变更溯源。所有级别都是累积的——标准级包含基础级的所有内容，完整级包含标准级的所有内容。"
+    },
+    {
+      "q": "什么是 AQA Shield？",
+      "a": "AQA Shield 是一种可在任意符合性级别使用的正交保护机制。当文档中的每个问题都包含 aiUsagePolicy（声明允许的 AI 使用方式，如 RAG 引用、训练、摘要、引用和商业使用）和 contentSignature（证明答案完整性的 SHA-256 哈希）时，该文档即可获得 AQA Shield 认证。Shield 将法律声明与密码学验证相结合。"
+    },
+    {
+      "q": "如何在我的网站上实现 AQA？",
+      "a": "在您的 FAQ 页面中添加一个 JSON-LD 脚本块，使用双上下文同时引用 Schema.org 和位于 https://aqa-spec.org/ns/context.jsonld 的 AQA 上下文。将 FAQ 包装在包含 FAQPage 的 Article 中，为每个问题添加 dateCreated、dateModified 和 citation 属性，然后使用 Python 验证器进行验证。GitHub 上的迁移指南提供了从纯 HTML FAQ 到完整 AQA 实现的 8 个详细步骤。"
+    }
+  ],
+  "philosophy_title": "设计理念",
+  "philosophy_text_1": "AQA 是开放的，永久免费，无供应商锁定。任何人都可以实现、验证和扩展它。该规范采用 MIT 许可证，由社区驱动。",
+  "philosophy_text_2": "其目标是为 AI 可见性做 OpenGraph 为社交分享所做的事：为发布者提供一种简单、标准的方式，使其内容对机器可理解，同时不破坏任何已有功能。",
+  "footer_spec": "AQA 规范 v1.2.2-草案",
+  "footer_created": "由 Davy Abderrahman 创建"
+}

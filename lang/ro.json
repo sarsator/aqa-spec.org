@@ -1,0 +1,123 @@
+{
+  "lang": "ro",
+  "title": "AQA — AI Question Answer | Specificație Deschisă pentru Q&A Optimizat pentru AI",
+  "meta_description": "AQA este o specificație deschisă pentru îmbogățirea datelor structurate FAQ cu metadate de care au nevoie sistemele AI. Compatibilă cu Schema.org, licență MIT, gratuită pentru totdeauna.",
+  "og_title": "AQA — AI Question Answer",
+  "og_description": "Specificație deschisă pentru conținut Q&A structurat, optimizat pentru înțelegerea și citarea de către AI.",
+  "h1": "AQA — AI Question Answer",
+  "subtitle": "Specificație deschisă pentru conținut Q&A structurat, optimizat pentru înțelegerea și citarea de către AI.",
+  "schema_compatible": "Compatibil cu Schema.org",
+  "problem_title": "Problema",
+  "problem_text": "Paginile de FAQ sunt peste tot, dar FAQPage din Schema.org oferă sistemelor AI aproape nimic pentru a evalua calitatea răspunsurilor. Nu există date per întrebare, niciun jurnal de modificări, nicio citare de surse per răspuns și nicio frecvență de întreținere declarată. Un robot AI nu poate determina dacă un răspuns a fost scris ieri sau acum trei ani, sau dacă cineva îl mai actualizează.",
+  "solution_title": "Soluția",
+  "solution_text": "AQA este o convenție documentată care îmbogățește tipurile Schema.org existente (Article, FAQPage, Question, Answer) cu un set restrâns de proprietăți de extensie printr-un context JSON-LD personalizat. Nu se creează tipuri noi și nu se introduc modificări incompatibile. Validatorii care nu înțeleg spațiul de nume AQA ignoră silențios proprietățile suplimentare. Compatibilitatea retroactivă completă este păstrată.",
+  "signals_title": "Ce Adaugă AQA",
+  "signals_col_signal": "Semnal",
+  "signals_col_description": "Ce le transmite roboților AI",
+  "signals": [
+    {"signal": "<code>dateCreated</code> / <code>dateModified</code>", "desc": "Prospețimea exactă a fiecărui răspuns individual"},
+    {"signal": "<code>citation</code>", "desc": "Sursa autoritară care susține fiecare afirmație"},
+    {"signal": "<code>changelog</code>", "desc": "De ce și când a fost modificat fiecare răspuns"},
+    {"signal": "<code>questionVersion</code>", "desc": "Urmărirea modificărilor de substanță ale răspunsurilor"},
+    {"signal": "<code>updateFrequency</code>", "desc": "Angajamentul editorului față de revizuirea conținutului"},
+    {"signal": "<code>monitoringSources</code>", "desc": "Feed-urile și publicațiile urmărite de editor"},
+    {"signal": "<code>conformanceLevel</code>", "desc": "Adâncimea de implementare autodeclarată"},
+    {"signal": "<code>aiUsagePolicy</code>", "desc": "Drepturi granulare AI: RAG, antrenare, citare, utilizare comercială"},
+    {"signal": "<code>contentSignature</code>", "desc": "Hash SHA-256 care dovedește integritatea răspunsului"},
+    {"signal": "<code>ragSummary</code>", "desc": "Rezumat de 300 de caractere optimizat pentru vectorizare"},
+    {"signal": "<code>audienceAnswers</code>", "desc": "Variante de răspuns specifice audienței"},
+    {"signal": "<code>dynamicEndpoint</code>", "desc": "API în timp real pentru date volatile"},
+    {"signal": "<code>unansweredQueryEndpoint</code>", "desc": "Webhook: AI retrimite întrebările fără răspuns"},
+    {"signal": "<code>validThrough</code>", "desc": "Data de expirare per răspuns"},
+    {"signal": "<code>verificationStatus</code>", "desc": "Status: verificat / depășit / în curs de revizuire"},
+    {"signal": "<code>specVersion</code>", "desc": "Declararea versiunii specificației AQA"},
+    {"signal": "<code>updateFeedUrl</code>", "desc": "Indicator către feed-ul de detectare a modificărilor"},
+    {"signal": "<code>pingbackEndpoints</code>", "desc": "Notificări push la actualizările de conținut"}
+  ],
+  "conformance_title": "Niveluri de Conformitate",
+  "basic_title": "De Bază",
+  "basic_effort": "Efort minim",
+  "basic_desc": "Fiecare răspuns are o dată cunoscută și cel puțin o citare de sursă. Documentul declară limba și autorul.",
+  "standard_title": "Standard",
+  "standard_effort": "Efort moderat",
+  "standard_desc": "Conținutul este menținut activ, modificările sunt urmărite cu un jurnal de schimbări, iar contextul de industrie este explicit prin clasificare sectorială și surse de monitorizare.",
+  "full_title": "Complet",
+  "full_effort": "Efort semnificativ",
+  "full_desc": "Lanț complet de proveniență: cine a scris fiecare răspuns, ce s-a schimbat, când, de ce și de unde. Autorat per întrebare și jurnale de modificări versionificate.",
+  "shield_title": "AQA Shield",
+  "shield_text": "Când fiecare întrebare dintr-un document include atât <code>aiUsagePolicy</code>, cât și <code>contentSignature</code>, documentul se califică pentru AQA Shield. Politica declară utilizările AI permise (citare RAG, antrenare, rezumare, citare, utilizare comercială). Semnătura furnizează verificarea hash SHA-256 împotriva alterărilor de conținut. Shield funcționează la orice nivel de conformitate ca o garanție ortogonală ce combină protecția juridică cu integritatea criptografică.",
+  "quickstart_title": "Început Rapid",
+  "quickstart_intro": "O implementare minimă AQA Basic:",
+  "quickstart_validate": "Validați implementarea:",
+  "quickstart_migration": "Ghid de Migrare",
+  "quickstart_migration_desc": "instrucțiuni pas cu pas pentru adăugarea AQA la paginile FAQ existente.",
+  "copy_btn": "Copiați",
+  "copy_btn_done": "Copiat",
+  "features_title": "Funcționalități V1.2",
+  "protection_title": "Protecție",
+  "protection_items": [
+    "<code>aiUsagePolicy</code> — declarație granulară a drepturilor AI",
+    "<code>contentSignature</code> — hash de integritate SHA-256"
+  ],
+  "enrichment_title": "Îmbogățire",
+  "enrichment_items": [
+    "<code>ragSummary</code> — rezumat optimizat pentru vectori",
+    "<code>audienceAnswers</code> — variante multi-persona",
+    "<code>potentialAction</code> — acțiuni agentice",
+    "<code>dynamicEndpoint</code> — API în timp real"
+  ],
+  "feedback_title": "Feedback",
+  "feedback_items": [
+    "<code>unansweredQueryEndpoint</code> — webhook pentru răspuns lipsă",
+    "<code>validThrough</code> — expirarea răspunsului",
+    "<code>verificationStatus</code> — verificat / depășit / în curs de revizuire"
+  ],
+  "distribution_title": "Distribuție",
+  "distribution_items": [
+    "<code>specVersion</code> — declararea versiunii specificației",
+    "<code>updateFeedUrl</code> — feed de modificări bazat pe interogare",
+    "<code>pingbackEndpoints</code> — notificări push",
+    "AQA Hub Protocol — agregare centralizată a actualizărilor"
+  ],
+  "resources_title": "Resurse",
+  "resources": [
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/SPECIFICATION.md", "label": "Specificație Completă", "desc": "specificația tehnică completă AQA"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/migration-guide.md", "label": "Ghid de Migrare", "desc": "ghid în 8 pași de la HTML FAQ simplu la AQA"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/crawler-recommendations.md", "label": "Recomandări pentru Roboți", "desc": "îndrumare pentru dezvoltatorii de roboți AI"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/ecosystem-integration.md", "label": "Integrare în Ecosistem", "desc": "LangChain, LlamaIndex, plugin WordPress"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/faq-vs-aqa-comparison.md", "label": "Comparație FAQ vs AQA", "desc": "comparație semnale față în față"},
+    {"url": "https://github.com/sarsator/aqa-specification/tree/master/validators", "label": "Validator Python", "desc": "validați blocuri AQA din fișier sau URL (scor 0-100)"},
+    {"url": "https://github.com/sarsator/aqa-specification/tree/master/examples", "label": "Exemple", "desc": "7 implementări pentru nivelurile Basic, Standard și Full"},
+    {"url": "https://aqa-spec.org/ns/context.jsonld", "label": "Context JSON-LD", "desc": "definiția spațiului de nume AQA"},
+    {"url": "https://aqa-spec.org/schemas/aqa-schema.json", "label": "JSON Schema", "desc": "schemă de validare lizibilă de mașini"}
+  ],
+  "faq_title": "Întrebări Frecvente",
+  "faq_intro": "Acest FAQ implementează AQA Full + Shield. <a href=\"view-source:https://aqa-spec.org/\">Vizualizați sursa paginii</a> pentru a vedea blocul JSON-LD.",
+  "faq": [
+    {
+      "q": "Ce este AQA?",
+      "a": "AQA (AI Question Answer) este o specificație deschisă care îmbogățește datele structurate FAQPage din Schema.org cu metadate de care sistemele AI au nevoie pentru a evalua calitatea, prospețimea și proveniența răspunsurilor. Folosește un context JSON-LD personalizat pentru a adăuga proprietăți de extensie precum date per întrebare, citări, jurnale de modificări și politici de utilizare AI la tipurile Schema.org existente. AQA are licență MIT, este gratuit pentru totdeauna și nu creează dependență de furnizor."
+    },
+    {
+      "q": "Este AQA compatibil cu Schema.org?",
+      "a": "Da. AQA folosește exclusiv tipurile Schema.org existente (Article, FAQPage, Question, Answer) și adaugă proprietăți de extensie printr-un context JSON-LD. Validatorii care nu înțeleg spațiul de nume AQA ignoră silențios proprietățile suplimentare. Marcajul Schema.org existent continuă să funcționeze nemodificat. AQA este o supersetă strictă — orice bloc AQA valid este și un document Schema.org valid."
+    },
+    {
+      "q": "Care sunt nivelurile de conformitate AQA?",
+      "a": "AQA definește trei niveluri de conformitate. De Bază necesită date per întrebare, cel puțin o citare per răspuns și autor și limbă la nivel de document. Standard adaugă frecvența de actualizare, jurnalul de modificări, versionarea întrebărilor, clasificarea sectorială și citările structurate. Complet necesită surse de monitorizare, autorat per întrebare cu acreditări și proveniență completă a modificărilor. Toate nivelurile sunt cumulative — Standard include tot ce conține De Bază, iar Complet include tot ce conține Standard."
+    },
+    {
+      "q": "Ce este AQA Shield?",
+      "a": "AQA Shield este un mecanism de protecție ortogonal disponibil la orice nivel de conformitate. Un document se califică pentru AQA Shield când fiecare întrebare include atât o aiUsagePolicy (care declară utilizările AI permise, cum ar fi citarea RAG, antrenarea, rezumarea, citarea și utilizarea comercială), cât și o contentSignature (hash SHA-256 care dovedește integritatea răspunsului). Shield combină declarația juridică cu verificarea criptografică."
+    },
+    {
+      "q": "Cum implementez AQA pe site-ul meu?",
+      "a": "Adăugați un bloc de script JSON-LD în pagina de FAQ cu un context dual care referențiază atât Schema.org, cât și contextul AQA de la https://aqa-spec.org/ns/context.jsonld. Înfășurați FAQ-ul într-un Article care conține un FAQPage, adăugați proprietățile dateCreated, dateModified și citation per întrebare, apoi validați cu validatorul Python. Ghidul de migrare de pe GitHub oferă 8 pași detaliați, de la un FAQ HTML simplu până la o implementare AQA completă."
+    }
+  ],
+  "philosophy_title": "Filosofie",
+  "philosophy_text_1": "AQA este deschis, gratuit pentru totdeauna și nu creează dependență de furnizor. Oricine îl poate implementa, valida și extinde. Specificația are licență MIT și este condusă de comunitate.",
+  "philosophy_text_2": "Obiectivul este să facă pentru vizibilitatea AI ceea ce a făcut OpenGraph pentru distribuirea pe rețelele sociale: să ofere editorilor o modalitate simplă și standard de a face conținutul lor înțeles de mașini fără a strica nimic din ce funcționează deja.",
+  "footer_spec": "AQA Specification v1.2.2-draft",
+  "footer_created": "Creat de Davy Abderrahman"
+}

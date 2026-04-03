@@ -1,0 +1,292 @@
+{
+  "@context": [
+    "https://schema.org",
+    "https://aqa-spec.org/ns/context.jsonld"
+  ],
+  "@type": "Article",
+  "headline": "AQA Specification — Frequently Asked Questions",
+  "author": {
+    "@type": "Person",
+    "name": "Davy Abderrahman",
+    "jobTitle": "Founder & Lead Author",
+    "url": "https://ai-labs-solutions.fr",
+    "sameAs": "https://github.com/sarsator",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "AI Labs Solutions",
+      "url": "https://ai-labs-solutions.fr"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AI Labs Solutions",
+    "url": "https://ai-labs-solutions.fr"
+  },
+  "datePublished": "2026-04-03",
+  "dateModified": "2026-04-03",
+  "inLanguage": "en",
+  "url": "https://aqa-spec.org/",
+  "conformanceLevel": "full",
+  "updateFrequency": "monthly",
+  "specVersion": "1.2",
+  "updateFeedUrl": "https://aqa-spec.org/.well-known/aqa-updates.json",
+  "pingbackEndpoints": [
+    "https://aqa-spec.org/hub/api/v1/ping"
+  ],
+  "about": {
+    "@type": "Thing",
+    "name": "Open Standards — Structured Data",
+    "identifier": [
+      {
+        "@type": "PropertyValue",
+        "propertyID": "NACE",
+        "value": "62.01"
+      }
+    ]
+  },
+  "monitoringSources": [
+    {
+      "@type": "MonitoringSource",
+      "name": "Schema.org Releases",
+      "url": "https://schema.org/docs/releases.html",
+      "sourceType": "rss"
+    },
+    {
+      "@type": "MonitoringSource",
+      "name": "W3C JSON-LD Working Group",
+      "url": "https://www.w3.org/groups/wg/json-ld/",
+      "sourceType": "professional_body"
+    }
+  ],
+  "aiUsagePolicy": {
+    "@type": "AIUsagePolicy",
+    "ragCitation": "allow",
+    "modelTraining": "allow",
+    "summarization": "allow",
+    "directQuote": "allow",
+    "commercialUse": "allow"
+  },
+  "mainEntity": {
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is AQA?",
+        "dateCreated": "2026-04-03",
+        "dateModified": "2026-04-03",
+        "questionVersion": "1.0",
+        "author": {
+          "@type": "Person",
+          "name": "Davy Abderrahman",
+          "jobTitle": "Founder & Lead Author",
+          "sameAs": "https://github.com/sarsator"
+        },
+        "citation": {
+          "@type": "CreativeWork",
+          "name": "AQA Specification v1.2",
+          "url": "https://github.com/sarsator/aqa-specification/blob/master/SPECIFICATION.md",
+          "datePublished": "2026-04-03"
+        },
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AQA (AI Question Answer) is an open specification that enriches Schema.org FAQPage structured data with metadata that AI systems need to assess answer quality, freshness, and provenance. It uses a custom JSON-LD context to add extension properties like per-question dates, citations, changelogs, and AI usage policies to existing Schema.org types. AQA is MIT-licensed, free forever, and has no vendor lock-in."
+        },
+        "ragSummary": "AQA is an open, MIT-licensed specification extending Schema.org FAQPage with AI-optimized metadata: per-question dates, citations, changelogs, usage policies. No vendor lock-in.",
+        "verificationStatus": "verified",
+        "contentSignature": {
+          "@type": "ContentSignature",
+          "hashAlgorithm": "sha256",
+          "hashValue": "a8eae9839e9bf67f9d8439dbcdf1cd012eb8a779a5b56b3b38c55f3f5507497e",
+          "signedFields": [
+            "acceptedAnswer.text"
+          ],
+          "signedAt": "2026-04-03T00:00:00Z"
+        },
+        "changelog": [
+          {
+            "@type": "ChangelogEntry",
+            "changeDate": "2026-04-03",
+            "changeDescription": "Initial FAQ entry created for aqa-spec.org launch",
+            "changeSourceUrl": "https://github.com/sarsator/aqa-specification/blob/master/README.md"
+          }
+        ]
+      },
+      {
+        "@type": "Question",
+        "name": "Is AQA compatible with Schema.org?",
+        "dateCreated": "2026-04-03",
+        "dateModified": "2026-04-03",
+        "questionVersion": "1.0",
+        "author": {
+          "@type": "Person",
+          "name": "Davy Abderrahman",
+          "jobTitle": "Founder & Lead Author",
+          "sameAs": "https://github.com/sarsator"
+        },
+        "citation": {
+          "@type": "CreativeWork",
+          "name": "AQA Specification — Section 2: Architecture",
+          "url": "https://github.com/sarsator/aqa-specification/blob/master/SPECIFICATION.md",
+          "datePublished": "2026-04-03"
+        },
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. AQA uses only existing Schema.org types (Article, FAQPage, Question, Answer) and adds extension properties through a JSON-LD context. Validators that do not understand the AQA namespace silently ignore the extra properties. Existing Schema.org markup continues to work unchanged. AQA is a strict superset — every valid AQA block is also a valid Schema.org document."
+        },
+        "ragSummary": "AQA is fully Schema.org compatible. It extends existing types via JSON-LD context. Unknown properties are silently ignored. Every AQA block is a valid Schema.org document.",
+        "verificationStatus": "verified",
+        "contentSignature": {
+          "@type": "ContentSignature",
+          "hashAlgorithm": "sha256",
+          "hashValue": "d1332f7a3d2a12d525b50a6d018b73c406e579fa1d956593b410102a91d2f634",
+          "signedFields": [
+            "acceptedAnswer.text"
+          ],
+          "signedAt": "2026-04-03T00:00:00Z"
+        },
+        "changelog": [
+          {
+            "@type": "ChangelogEntry",
+            "changeDate": "2026-04-03",
+            "changeDescription": "Initial FAQ entry created for aqa-spec.org launch",
+            "changeSourceUrl": "https://github.com/sarsator/aqa-specification/blob/master/SPECIFICATION.md"
+          }
+        ]
+      },
+      {
+        "@type": "Question",
+        "name": "What are the AQA conformance levels?",
+        "dateCreated": "2026-04-03",
+        "dateModified": "2026-04-03",
+        "questionVersion": "1.0",
+        "author": {
+          "@type": "Person",
+          "name": "Davy Abderrahman",
+          "jobTitle": "Founder & Lead Author",
+          "sameAs": "https://github.com/sarsator"
+        },
+        "citation": {
+          "@type": "CreativeWork",
+          "name": "AQA Specification — Section 4: Conformance Levels",
+          "url": "https://github.com/sarsator/aqa-specification/blob/master/SPECIFICATION.md",
+          "datePublished": "2026-04-03"
+        },
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AQA defines three conformance levels. Basic requires per-question dates, at least one citation per answer, and document-level author and language. Standard adds update frequency, changelog, question versioning, sector classification, and structured citations. Full requires monitoring sources, per-question authorship with credentials, and complete change provenance. All levels are cumulative — Standard includes everything in Basic, and Full includes everything in Standard."
+        },
+        "ragSummary": "Three cumulative levels: Basic (dates + citations), Standard (changelog + versioning + sector), Full (monitoring sources + per-question authors + full provenance).",
+        "verificationStatus": "verified",
+        "contentSignature": {
+          "@type": "ContentSignature",
+          "hashAlgorithm": "sha256",
+          "hashValue": "bc2cc35ff89dbed44ad061b3ce3e4fb7e72b865984d38cb0f9225d154feb4f39",
+          "signedFields": [
+            "acceptedAnswer.text"
+          ],
+          "signedAt": "2026-04-03T00:00:00Z"
+        },
+        "changelog": [
+          {
+            "@type": "ChangelogEntry",
+            "changeDate": "2026-04-03",
+            "changeDescription": "Initial FAQ entry created for aqa-spec.org launch",
+            "changeSourceUrl": "https://github.com/sarsator/aqa-specification/blob/master/SPECIFICATION.md"
+          }
+        ]
+      },
+      {
+        "@type": "Question",
+        "name": "What is AQA Shield?",
+        "dateCreated": "2026-04-03",
+        "dateModified": "2026-04-03",
+        "questionVersion": "1.0",
+        "author": {
+          "@type": "Person",
+          "name": "Davy Abderrahman",
+          "jobTitle": "Founder & Lead Author",
+          "sameAs": "https://github.com/sarsator"
+        },
+        "citation": {
+          "@type": "CreativeWork",
+          "name": "AQA Specification — Section 3.11: AQA Shield",
+          "url": "https://github.com/sarsator/aqa-specification/blob/master/SPECIFICATION.md",
+          "datePublished": "2026-04-03"
+        },
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AQA Shield is an orthogonal protection mechanism available at any conformance level. A document qualifies for AQA Shield when every question includes both an aiUsagePolicy (declaring permitted AI uses such as RAG citation, training, summarization, quoting, and commercial use) and a contentSignature (SHA-256 hash proving answer integrity). Shield combines legal declaration with cryptographic verification."
+        },
+        "ragSummary": "AQA Shield = aiUsagePolicy + contentSignature on all questions. Combines legal AI usage declaration with SHA-256 integrity proof. Works at any conformance level.",
+        "verificationStatus": "verified",
+        "contentSignature": {
+          "@type": "ContentSignature",
+          "hashAlgorithm": "sha256",
+          "hashValue": "3c55887b2b22c2b928c67a073ceb983530348a94ba2f76d40d9055b8fbdd368f",
+          "signedFields": [
+            "acceptedAnswer.text"
+          ],
+          "signedAt": "2026-04-03T00:00:00Z"
+        },
+        "changelog": [
+          {
+            "@type": "ChangelogEntry",
+            "changeDate": "2026-04-03",
+            "changeDescription": "Initial FAQ entry created for aqa-spec.org launch",
+            "changeSourceUrl": "https://github.com/sarsator/aqa-specification/blob/master/SPECIFICATION.md"
+          }
+        ]
+      },
+      {
+        "@type": "Question",
+        "name": "How do I implement AQA on my website?",
+        "dateCreated": "2026-04-03",
+        "dateModified": "2026-04-03",
+        "questionVersion": "1.0",
+        "author": {
+          "@type": "Person",
+          "name": "Davy Abderrahman",
+          "jobTitle": "Founder & Lead Author",
+          "sameAs": "https://github.com/sarsator"
+        },
+        "citation": [
+          {
+            "@type": "CreativeWork",
+            "name": "AQA Migration Guide",
+            "url": "https://github.com/sarsator/aqa-specification/blob/master/docs/migration-guide.md",
+            "datePublished": "2026-04-03"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "AQA Specification — Section 6: Implementation",
+            "url": "https://github.com/sarsator/aqa-specification/blob/master/SPECIFICATION.md",
+            "datePublished": "2026-04-03"
+          }
+        ],
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Add a JSON-LD script block to your FAQ page with a dual context referencing both Schema.org and the AQA context at https://aqa-spec.org/ns/context.jsonld. Wrap your FAQ in an Article containing a FAQPage, add per-question dateCreated, dateModified, and citation properties, then validate with the Python validator. The migration guide on GitHub provides 8 detailed steps from bare HTML FAQ to full AQA implementation."
+        },
+        "ragSummary": "Add JSON-LD with dual context (Schema.org + AQA). Wrap FAQ in Article > FAQPage. Add per-question dates and citations. Validate with Python validator. See migration guide.",
+        "verificationStatus": "verified",
+        "contentSignature": {
+          "@type": "ContentSignature",
+          "hashAlgorithm": "sha256",
+          "hashValue": "067eb63345290fb8020b42adc5c158a1effaeac3d3c6693e5d6dbbc11f5382a0",
+          "signedFields": [
+            "acceptedAnswer.text"
+          ],
+          "signedAt": "2026-04-03T00:00:00Z"
+        },
+        "changelog": [
+          {
+            "@type": "ChangelogEntry",
+            "changeDate": "2026-04-03",
+            "changeDescription": "Initial FAQ entry created for aqa-spec.org launch",
+            "changeSourceUrl": "https://github.com/sarsator/aqa-specification/blob/master/docs/migration-guide.md"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "lang": "cs",
+  "title": "AQA — AI Question Answer | Otevřená specifikace pro Q&A optimalizované pro AI",
+  "meta_description": "AQA je otevřená specifikace pro obohacení strukturovaných dat FAQ o metadata, která AI systémy potřebují. Kompatibilní se Schema.org, licencováno pod MIT, navždy zdarma.",
+  "og_title": "AQA — AI Question Answer",
+  "og_description": "Otevřená specifikace pro strukturovaný obsah Q&A optimalizovaný pro porozumění a citování ze strany AI.",
+  "h1": "AQA — AI Question Answer",
+  "subtitle": "Otevřená specifikace pro strukturovaný obsah Q&A optimalizovaný pro porozumění a citování ze strany AI.",
+  "schema_compatible": "Kompatibilní se Schema.org",
+  "problem_title": "Problém",
+  "problem_text": "Stránky FAQ jsou všude, ale Schema.org FAQPage dává AI systémům téměř nic pro hodnocení kvality odpovědí. Neexistují data na úrovni jednotlivých otázek, žádný changelog, žádné citace zdrojů pro každou odpověď a žádná deklarovaná frekvence údržby. AI crawler nemůže zjistit, zda byla odpověď napsána včera nebo před třemi lety, ani zda ji někdo stále udržuje.",
+  "solution_title": "Řešení",
+  "solution_text": "AQA je zdokumentovaná konvence, která obohacuje existující typy Schema.org (Article, FAQPage, Question, Answer) o malou sadu rozšiřujících vlastností prostřednictvím vlastního kontextu JSON-LD. Nejsou vynalézány žádné nové typy, nejsou zaváděny žádné změny narušující kompatibilitu. Validátory, které nerozumí jmennému prostoru AQA, tiše ignorují extra vlastnosti. Plná zpětná kompatibilita je zachována.",
+  "signals_title": "Co AQA Přidává",
+  "signals_col_signal": "Signál",
+  "signals_col_description": "Co říká AI crawlerům",
+  "signals": [
+    {"signal": "<code>dateCreated</code> / <code>dateModified</code>", "desc": "Přesná aktuálnost každé jednotlivé odpovědi"},
+    {"signal": "<code>citation</code>", "desc": "Autoritativní zdroj podporující každé tvrzení"},
+    {"signal": "<code>changelog</code>", "desc": "Proč a kdy byla každá odpověď upravena"},
+    {"signal": "<code>questionVersion</code>", "desc": "Sledování změn obsahu odpovědí"},
+    {"signal": "<code>updateFrequency</code>", "desc": "Závazek vydavatele ke kontrole obsahu"},
+    {"signal": "<code>monitoringSources</code>", "desc": "Jaké kanály a publikace vydavatel sleduje"},
+    {"signal": "<code>conformanceLevel</code>", "desc": "Vlastní deklarovaná hloubka implementace"},
+    {"signal": "<code>aiUsagePolicy</code>", "desc": "Granulární práva pro AI: RAG, trénování, citování, komerční použití"},
+    {"signal": "<code>contentSignature</code>", "desc": "SHA-256 hash prokazující integritu odpovědi"},
+    {"signal": "<code>ragSummary</code>", "desc": "Tokenově optimalizované shrnutí o 300 znacích pro vektorové vkládání"},
+    {"signal": "<code>audienceAnswers</code>", "desc": "Varianty odpovědí pro konkrétní cílové skupiny"},
+    {"signal": "<code>dynamicEndpoint</code>", "desc": "API v reálném čase pro volatilní data"},
+    {"signal": "<code>unansweredQueryEndpoint</code>", "desc": "Webhook: AI zasílá zpět chybějící otázky"},
+    {"signal": "<code>validThrough</code>", "desc": "Datum vypršení platnosti pro každou odpověď"},
+    {"signal": "<code>verificationStatus</code>", "desc": "Stav: verified / outdated / under-review"},
+    {"signal": "<code>specVersion</code>", "desc": "Deklarace verze specifikace AQA"},
+    {"signal": "<code>updateFeedUrl</code>", "desc": "Ukazatel na kanál pro detekci změn"},
+    {"signal": "<code>pingbackEndpoints</code>", "desc": "Push notifikace při aktualizacích obsahu"}
+  ],
+  "conformance_title": "Úrovně Shody",
+  "basic_title": "Basic",
+  "basic_effort": "Minimální úsilí",
+  "basic_desc": "Každá odpověď má známé stáří a alespoň jednu citaci zdroje. Dokument deklaruje svůj jazyk a autora.",
+  "standard_title": "Standard",
+  "standard_effort": "Střední úsilí",
+  "standard_desc": "Obsah je aktivně udržován, změny jsou sledovány pomocí changelogu a oborový kontext je explicitní prostřednictvím klasifikace sektoru a zdrojů monitorování.",
+  "full_title": "Full",
+  "full_effort": "Značné úsilí",
+  "full_desc": "Úplný řetězec provenance: kdo napsal každou odpověď, co bylo změněno, kdy, proč a odkud. Autorství na úrovni otázek a verzované changelogy.",
+  "shield_title": "AQA Shield",
+  "shield_text": "Když každá otázka v dokumentu obsahuje jak <code>aiUsagePolicy</code>, tak <code>contentSignature</code>, dokument se kvalifikuje pro AQA Shield. Zásada deklaruje povolená použití AI (citování RAG, trénování, sumarizace, citování, komerční použití). Podpis poskytuje SHA-256 ověření integrity proti změnám obsahu. Shield funguje na libovolné úrovni shody jako ortogonální záruka kombinující právní ochranu a kryptografickou integritu.",
+  "quickstart_title": "Rychlý Start",
+  "quickstart_intro": "Minimální implementace AQA Basic:",
+  "quickstart_validate": "Ověřte svou implementaci:",
+  "quickstart_migration": "Průvodce Migrací",
+  "quickstart_migration_desc": "krok za krokem pokyny pro přidání AQA na existující stránky FAQ.",
+  "copy_btn": "Kopírovat",
+  "copy_btn_done": "Zkopírováno",
+  "features_title": "Funkce V1.2",
+  "protection_title": "Ochrana",
+  "protection_items": [
+    "<code>aiUsagePolicy</code> — granulární deklarace práv AI",
+    "<code>contentSignature</code> — SHA-256 hash integrity"
+  ],
+  "enrichment_title": "Obohacení",
+  "enrichment_items": [
+    "<code>ragSummary</code> — vektorově optimalizované shrnutí",
+    "<code>audienceAnswers</code> — varianty pro více person",
+    "<code>potentialAction</code> — agentické akce",
+    "<code>dynamicEndpoint</code> — API v reálném čase"
+  ],
+  "feedback_title": "Zpětná Vazba",
+  "feedback_items": [
+    "<code>unansweredQueryEndpoint</code> — webhook pro chybějící odpovědi",
+    "<code>validThrough</code> — vypršení platnosti odpovědi",
+    "<code>verificationStatus</code> — verified / outdated / under-review"
+  ],
+  "distribution_title": "Distribuce",
+  "distribution_items": [
+    "<code>specVersion</code> — deklarace verze specifikace",
+    "<code>updateFeedUrl</code> — kanál změn na základě dotazování",
+    "<code>pingbackEndpoints</code> — push notifikace",
+    "AQA Hub Protocol — centralizovaná agregace aktualizací"
+  ],
+  "resources_title": "Zdroje",
+  "resources": [
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/SPECIFICATION.md", "label": "Úplná Specifikace", "desc": "kompletní technická specifikace AQA"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/migration-guide.md", "label": "Průvodce Migrací", "desc": "8kroký průvodce od prostého HTML FAQ po AQA"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/crawler-recommendations.md", "label": "Doporučení pro Crawlery", "desc": "pokyny pro vývojáře AI crawlerů"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/ecosystem-integration.md", "label": "Integrace Ekosystému", "desc": "LangChain, LlamaIndex, WordPress plugin"},
+    {"url": "https://github.com/sarsator/aqa-specification/blob/master/docs/faq-vs-aqa-comparison.md", "label": "Porovnání FAQ vs AQA", "desc": "srovnání signálů vedle sebe"},
+    {"url": "https://github.com/sarsator/aqa-specification/tree/master/validators", "label": "Python Validátor", "desc": "ověření AQA bloků ze souboru nebo URL (hodnocení 0–100)"},
+    {"url": "https://github.com/sarsator/aqa-specification/tree/master/examples", "label": "Příklady", "desc": "7 implementací pro úrovně Basic, Standard a Full"},
+    {"url": "https://aqa-spec.org/ns/context.jsonld", "label": "Kontext JSON-LD", "desc": "definice jmenného prostoru AQA"},
+    {"url": "https://aqa-spec.org/schemas/aqa-schema.json", "label": "JSON Schema", "desc": "strojově čitelné validační schéma"}
+  ],
+  "faq_title": "Často Kladené Dotazy",
+  "faq_intro": "Toto FAQ implementuje AQA Full + Shield. <a href=\"view-source:https://aqa-spec.org/\">Zobrazit zdrojový kód stránky</a> a prohlédnout si blok JSON-LD.",
+  "faq": [
+    {
+      "q": "Co je AQA?",
+      "a": "AQA (AI Question Answer) je otevřená specifikace, která obohacuje strukturovaná data Schema.org FAQPage o metadata, která AI systémy potřebují k hodnocení kvality, aktuálnosti a původu odpovědí. Používá vlastní kontext JSON-LD pro přidání rozšiřujících vlastností jako data na úrovni otázek, citace, changelogy a zásady použití AI ke stávajícím typům Schema.org. AQA je licencováno pod MIT, navždy zdarma a bez závislosti na konkrétním dodavateli."
+    },
+    {
+      "q": "Je AQA kompatibilní se Schema.org?",
+      "a": "Ano. AQA používá pouze existující typy Schema.org (Article, FAQPage, Question, Answer) a přidává rozšiřující vlastnosti prostřednictvím kontextu JSON-LD. Validátory, které nerozumí jmennému prostoru AQA, tiše ignorují extra vlastnosti. Existující markup Schema.org nadále funguje beze změny. AQA je striktní nadmnožina — každý platný blok AQA je zároveň platným dokumentem Schema.org."
+    },
+    {
+      "q": "Jaké jsou úrovně shody AQA?",
+      "a": "AQA definuje tři úrovně shody. Basic vyžaduje data na úrovni otázek, alespoň jednu citaci na odpověď a autora a jazyk na úrovni dokumentu. Standard přidává frekvenci aktualizací, changelog, verzování otázek, klasifikaci sektoru a strukturované citace. Full vyžaduje zdroje monitorování, autorství na úrovni otázek s přihlašovacími údaji a úplný provenance změn. Všechny úrovně jsou kumulativní — Standard zahrnuje vše z Basic a Full zahrnuje vše ze Standard."
+    },
+    {
+      "q": "Co je AQA Shield?",
+      "a": "AQA Shield je ortogonální ochranný mechanismus dostupný na libovolné úrovni shody. Dokument se kvalifikuje pro AQA Shield, pokud každá otázka obsahuje jak aiUsagePolicy (deklarující povolená použití AI jako citování RAG, trénování, sumarizaci, citování a komerční použití), tak contentSignature (SHA-256 hash prokazující integritu odpovědi). Shield kombinuje právní deklaraci s kryptografickým ověřením."
+    },
+    {
+      "q": "Jak implementuji AQA na svůj web?",
+      "a": "Přidejte blok skriptu JSON-LD na svou stránku FAQ s duálním kontextem odkazujícím jak na Schema.org, tak na kontext AQA na https://aqa-spec.org/ns/context.jsonld. Zabalte své FAQ do Article obsahující FAQPage, přidejte vlastnosti dateCreated, dateModified a citation na úrovni otázek a poté ověřte pomocí Python validátoru. Průvodce migrací na GitHubu poskytuje 8 podrobných kroků od prostého HTML FAQ po plnou implementaci AQA."
+    }
+  ],
+  "philosophy_title": "Filozofie",
+  "philosophy_text_1": "AQA je otevřené, navždy zdarma a bez závislosti na konkrétním dodavateli. Kdokoli jej může implementovat, ověřit a rozšířit. Specifikace je licencována pod MIT a řízena komunitou.",
+  "philosophy_text_2": "Cílem je udělat pro viditelnost AI to, co OpenGraph udělal pro sdílení na sociálních sítích: poskytnout vydavatelům jednoduchý, standardní způsob, jak učinit jejich obsah strojově srozumitelným bez narušení toho, co již funguje.",
+  "footer_spec": "Specifikace AQA v1.2.2-návrh",
+  "footer_created": "Vytvořil Davy Abderrahman"
+}
