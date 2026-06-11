@@ -273,7 +273,7 @@ python validators/validate.py your-file.jsonld</code></pre>
   <footer class="site-footer">
     <div class="container">
       <p><?= e($t['footer_spec']) ?> — <a href="https://opensource.org/licenses/MIT">MIT License</a></p>
-      <p><?= e($t['footer_created']) ?> — <a href="https://ai-labs-solutions.fr">AI Labs Solutions</a></p>
+      <p><?= e($t['footer_created']) ?> — <a href="https://ai-labs-solutions.fr">AI Labs Solutions</a> · <a href="https://ailabsaudit.com">AI Labs Audit</a></p>
       <p><a href="https://github.com/sarsator/aqa-specification">GitHub</a></p>
     </div>
   </footer>
